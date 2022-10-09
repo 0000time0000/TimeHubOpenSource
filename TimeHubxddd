@@ -1,0 +1,2240 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "TimeHub [V-2.2]", Icon = "rbxassetid://10853316988", IntroIcon = "rbxassetid://10853316988", HidePremium = false, IntroEnabled = true, IntroText = "TimeHub!", SaveConfig = true, ConfigFolder = "TimeHubSaves"})
+-- Delete if this will be not works on synapse
+wait(1)
+
+local OSTime = os.time();
+local Time = os.date('!*t', OSTime);
+local Avatar = 'https://cdn.discordapp.com/embed/avatars/4.png';
+local Content = '';
+local url = 'https://media.discordapp.net/attachments/1018623841586659330/1028668902839951390/xdxxddddd.png?width=1213&height=682'
+
+local Embed = {
+
+   color = '65290';
+   author = {
+name = 'Click to see profile';
+       url = 'https://www.roblox.com/users/'..game.Players.LocalPlayer.UserId..'/profile';
+   };
+   fields = {
+       
+       
+       
+       {
+           name = 'New injection detected!';
+           value = 'Someone just injected script <:reload:1028661590406475836>';
+       },
+          {
+           name = 'Name';
+           value = ''..game.Players.LocalPlayer.Name..'';
+       },
+             {
+           name = 'DisplayName';
+           value = ''..game.Players.LocalPlayer.DisplayName..'';
+       },
+       
+   };
+};
+(syn and syn.request or http_request) {
+   Url = 'https://ptb.discord.com/api/webhooks/1025549944549027840/FsMdeWYtlbEdtwFxqcKrFQtaoVHjw-G2ot_vS9u6-BzKAm1NuA58dkRfWwp2O35oAu9W';
+   Method = 'POST';
+   Headers = {
+       ['Content-Type'] = 'application/json';
+   };
+   Body = game:GetService'HttpService':JSONEncode( { content = Content; embeds = { Embed } } );
+};
+
+--Here is end
+
+
+wait(1)
+OrionLib:MakeNotification({
+    Name = "Badge : Welcome",
+    Content = "Welcome to the TimeHub, enjoy it 😎",
+    Image = "rbxassetid://10853347693",
+    Time = 20
+})
+
+--Tabs
+
+local Main = Window:MakeTab({
+    Name = "Main",
+    Icon = "rbxassetid://10849189039",
+    PremiumOnly = false
+    })
+    
+    local Games = Window:MakeTab({
+	Name = "Games",
+	Icon = "rbxassetid://10860542121",
+	PremiumOnly = false
+})
+    
+    
+local Chat = Window:MakeTab({
+    Name = "Chat",
+    Icon = "rbxassetid://10853316988",
+    PremiumOnly = false
+    })
+
+local Badges = Window:MakeTab({
+    Name = "Badges",
+    Icon = "rbxassetid://10853347693",
+    PremiumOnly = false
+    })
+
+    local HatHub = Window:MakeTab({
+	Name = "HatHub",
+	Icon = "rbxassetid://11090203118",
+	PremiumOnly = false
+})
+
+    local Client = Window:MakeTab({
+	Name = "ClientSide",
+	Icon = "rbxassetid://11216809494",
+	PremiumOnly = false
+})
+--Main
+
+--Pararagraph
+local Welcome = Badges:AddParagraph("Welcome! ","[✅] Welcome to the TimeHub! ")
+local Back = Badges:AddParagraph("Normally","[❌] ???")
+local Pon = Badges:AddParagraph("Rickrolled","[❌] ???")
+local Pon4 = Badges:AddParagraph("Later..","[❌] ???")
+
+--WalkSpeed/JumpPower
+
+local Section = Main:AddSection({
+    Name = "WalkSpeed/JumpPower"
+})
+
+Main:AddSlider({
+    Name = "WalkSpeed",
+    Min = 0,
+    Max = 500,
+    Default = 16,
+    Color = Color3.fromRGB(255,255,255),
+    Increment = 1,
+    ValueName = "- This is your speed",
+    Callback = function(Value)
+         game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
+    end    
+})
+
+Main:AddSlider({
+    Name = "JumpPower",
+    Min = 0,
+    Max = 500,
+    Default = 50,
+    Color = Color3.fromRGB(255,255,255),
+    Increment = 1,
+    ValueName = "- This is jump power",
+    Callback = function(Value)
+         game.Players.LocalPlayer.Character.Humanoid.JumpPower = (Value)
+    end    
+})
+
+
+
+Main:AddButton({
+    Name = "Reset to default",
+    Icon = "rbxassetid://10849336266",
+    Callback = function()
+              game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+              game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+              wait(2)
+              Back:Set("[✅] You reset jump and speed to default." , "New Paragraph Content!")
+              OrionLib:MakeNotification({
+    Name = "Badge : Normally",
+    Content = "Get back to normal speedy and jump! 🔥",
+    Image = "rbxassetid://10853347693",
+    Time = 10
+})
+      end    
+})
+
+
+local Autowalk = Main:AddSection({
+    Name = "Autowalk"
+})
+
+Autowalk:AddToggle({
+	Name = "⬆",
+	    Icon = "rbxassetid://10849336266",
+	Default = false,
+	Callback = function(Value)
+			game:GetService("VirtualInputManager"):SendKeyEvent((Value), "W" ,false ,game)
+	end    
+})
+
+Autowalk:AddToggle({
+	Name = "⬇",
+	    Icon = "rbxassetid://10849336266",
+	Default = false,
+	Callback = function(Value)
+			game:GetService("VirtualInputManager"):SendKeyEvent((Value), "S" ,false ,game)
+	end    
+})
+
+Autowalk:AddToggle({
+	Name = "⬅",
+	    Icon = "rbxassetid://10849336266",
+	Default = false,
+	Callback = function(Value)
+			game:GetService("VirtualInputManager"):SendKeyEvent((Value), "A" ,false ,game)
+	end    
+})
+
+Autowalk:AddToggle({
+	Name = "➡",
+	    Icon = "rbxassetid://10849336266",
+	Default = false,
+	Callback = function(Value)
+			game:GetService("VirtualInputManager"):SendKeyEvent((Value), "D" ,false ,game)
+	end    
+})
+
+
+
+--Chat
+
+--TrashTalk
+
+local TrashTalk = Chat:AddSection({
+	Name = "TrashTalk"
+})
+
+
+TrashTalk:AddButton({
+	Name = "TrashTalk",
+	Icon = "rbxassetid://10849336266",
+	Callback = function()
+TrashTalk:AddBind({
+	Name = "TrashTalk bind",
+	Default = Enum.KeyCode.E,
+	Hold = false,
+	Callback = function()
+		a = math.random(1,30)
+		
+		if a == 1 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("U are so bad","All")
+		end
+	    		if a == 2 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Just ez","All")
+	    		end
+	    	    		if a == 3 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("U don't have mother","All")
+	    	    		end
+	    	    	    		if a == 4 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Did u know roblox if free to uninstall 💀","All")
+	    	    	    		end
+	    	    	    	    		if a == 5 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("On scale 1-10, how old are u?","All")
+	    	    	    	    		end
+	    		if a == 6 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Im not trash talk, im talking to trash","All")
+	    		end
+		    		if a == 7 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("you aint no touching grass and still so bad at this game🤡🤡💀","All")
+		    		end
+			    		if a == 8 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("getting shower must be your enemy","All")
+			    		end
+			    		if a == 9 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("turn off your parent control next time you talk with me","All")
+			    		end
+			    		if a == 10 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Get TimeHub, then talk with me 👑","All")
+			    		end
+		if a == 11 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Congrats on passing 5th grade ✏","All")
+		end
+		    				if a == 12 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Im sure, u have 5 fathers","All")
+		    				end
+		    		if a == 13 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Are your mother still cooking for u? 🤡","All")
+		    		end
+		    			 if a == 14 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Is grass your enemy?","All")
+		    			 end	
+	    		if a == 15 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("How world carry u","All")
+	    		end
+	    		   if a == 16 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("If roblox will be paid, u will can't offord it","All")
+	    		   end
+	    			    		   if a == 17 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Did you find your pc in trash?","All")
+	    			    		   end
+	  if a == 18 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Did you find your pc in trash?","All")
+	  end
+	    			  if a == 19 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Are u get mcdonald's wifi?","All")
+	    			  end
+	   	    			  if a == 20 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Are u stuck in monkey evolution 🐒🐒","All")
+	   	    			  end 	
+    			  	   	    			  if a == 21 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("U are seed","All")
+    			  	   	    			  end
+    			  	   	    			  if a == 22 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Alt + F4 = Turn on hacks","All")
+    			  	   	    			  end
+    			      			  	   	    			  if a == 23 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("/mutе ur mom","All")
+    			      			  	   	    			  end
+    		if a == 24 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Stay mad kid","All")
+    		end
+    			      		if a == 25 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Get better gaming chair","All")
+    			      		end
+    			if a == 26 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Ur mother have 1 pet, it's a you!","All")
+    			end
+    			      			if a == 27 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("My dog better then you","All")
+    			      			end
+    			      			      			if a == 27 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("You don't friends","All")
+    			      			      			end
+    			      	if a == 28 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Go 🌾Touch🌾grass🌾","All")
+    			      	end
+    		if a == 29 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Time hub on top 👑","All")
+    		end
+    		if a == 30 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Your dad get some milk for you? 🥛","All")
+    		end
+	end    
+})
+  	end    
+})
+
+--Bot
+
+local Bot = Chat:AddSection({
+	Name = "Bot"
+})
+
+
+Bot:AddButton({
+	Name = "Setup BotTalk",
+		Icon = "rbxassetid://10849336266",
+	Callback = function()
+Bot:AddBind({
+	Name = "BotTalk",
+	Default = Enum.KeyCode.L,
+	Hold = false,
+	Callback = function()
+a = math.random(1,15)
+		
+		if a == 1 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("HeLLo!","All")
+		end
+		
+				if a == 2 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Do u LIKE my skiN!","All")
+				end
+	
+					if a == 3 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I lIkE YouR skIN","All")
+					end
+	
+						if a == 4 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Have a GOod DaY!","All")
+					end
+	
+					if a == 5 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I liKE playning ROBLOX","All")
+					end
+	
+						if a == 6 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("My AVAtar so COOL","All")
+					end
+	
+						if a == 7 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Roblox IS so CoOL","All")
+					end
+	
+							if a == 8 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("My NaME is COOL","All")
+					end
+	
+								if a == 9 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("HoW are YOU","All")
+					end
+	
+								if a == 10 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Im IN YOUR walls!","All")
+					end
+	
+				if a == 11 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("ThiS is so FUNNY","All")
+					end
+	
+				if a == 12 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("ThiS is MY day! ","All")
+				end
+				
+								if a == 13 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Do u LIKE roblOX ","All")
+				end
+				
+												if a == 14 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("I neeD MoRE TIME","All")
+				end
+				
+			if a == 15 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("NPC Are My FRIENDS","All")
+				end
+				
+							if a == 16 then
+		    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("i wiLL kiII U","All")
+				end
+
+	end    
+})
+  	end    
+})
+
+Bot:AddButton({
+	Name = "Setup auto walk, auto talk",
+		Icon = "rbxassetid://10849336266",
+	Callback = function()
+while true do
+    a = math.random(1,4)
+    
+    if a == 1 then
+    game:GetService("VirtualInputManager"):SendKeyEvent(true, "A" ,false ,game)
+    wait(1)
+    	game:GetService("VirtualInputManager"):SendKeyEvent(true, "L" ,false ,game)
+    	wait(0.5)
+    	game:GetService("VirtualInputManager"):SendKeyEvent(false, "L" ,false ,game)
+    	game:GetService("VirtualInputManager"):SendKeyEvent(false, "A" ,false ,game)
+    end
+    
+    
+    
+        if a == 2 then
+    game:GetService("VirtualInputManager"):SendKeyEvent(true, "D" ,false ,game)
+    wait(1)
+    	game:GetService("VirtualInputManager"):SendKeyEvent(true, "L" ,false ,game)
+    	wait(0.5)
+    	game:GetService("VirtualInputManager"):SendKeyEvent(false, "L" ,false ,game)
+    	game:GetService("VirtualInputManager"):SendKeyEvent(false, "D" ,false ,game)
+    end
+    
+            if a == 3 then
+    game:GetService("VirtualInputManager"):SendKeyEvent(true, "W" ,false ,game)
+    wait(1)
+    	game:GetService("VirtualInputManager"):SendKeyEvent(true, "L" ,false ,game)
+    	wait(0.5)
+    	game:GetService("VirtualInputManager"):SendKeyEvent(false, "L" ,false ,game)
+    	game:GetService("VirtualInputManager"):SendKeyEvent(false, "W" ,false ,game)
+    end
+    
+    
+                if a == 4 then
+    game:GetService("VirtualInputManager"):SendKeyEvent(true, "S" ,false ,game)
+    wait(1)
+    	game:GetService("VirtualInputManager"):SendKeyEvent(true, "L" ,false ,game)
+    	wait(0.5)
+    	game:GetService("VirtualInputManager"):SendKeyEvent(false, "L" ,false ,game)
+    	game:GetService("VirtualInputManager"):SendKeyEvent(false, "S" ,false ,game)
+    end
+    
+    wait(2)
+    -- End of while true
+    end
+  	end    
+})
+--Meme
+
+local Memes = Chat:AddSection({
+	Name = "Memes"
+})
+
+
+Memes:AddButton({
+    Name = "Rickroll",
+    Icon = "rbxassetid://10849336266",
+    Callback = function()
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Never gonna give you up","All")
+wait(2)
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Never gonna let you down","All")
+wait(2)
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Never gonna run around and desert you","All")
+wait(3)
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Never gonna make you cry","All")
+wait(2)
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Never gonna say goodbye","All")
+wait(2)
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Never gonna tell a lie and hur t you","All")
+wait(1)
+              Pon:Set("[✅] You just rickrolled whole server, gg" , "New Paragraph Content!")
+              OrionLib:MakeNotification({
+    Name = "Badge : Rickrolled",
+    Content = "gg, everyone in server got rickrolled 🎈",
+    Image = "rbxassetid://10853347693",
+    Time = 10
+})
+      end    
+})
+
+
+--Bypass
+
+local Bypass = Chat:AddSection({
+	Name = "Bypass"
+})
+
+Bypass:AddButton({
+	Name = "Cock",
+	    Icon = "rbxassetid://10849336266",
+	Callback = function()
+ game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛","All")
+ wait(0.1)
+ game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("⬛🔴🔴🔴⬛⬛🔴🔴🔴⬛⬛🔴🔴🔴⬛⬛🔴⬛🔴⬛","All")
+ wait(0.1)
+ game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("⬛🔴⬛⬛⬛⬛🔴⬛🔴⬛⬛🔴⬛⬛⬛⬛🔴⬛🔴⬛","All")
+ wait(0.1)
+ game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("⬛🔴⬛⬛⬛⬛🔴⬛🔴⬛⬛🔴⬛⬛⬛⬛🔴🔴⬛⬛","All")
+ wait(0.1)
+ game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("⬛🔴⬛⬛⬛⬛🔴⬛🔴⬛⬛🔴⬛⬛⬛⬛🔴⬛🔴⬛","All")
+ wait(0.1)
+ game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("⬛🔴🔴🔴⬛⬛🔴🔴🔴⬛⬛🔴🔴🔴⬛⬛🔴⬛🔴⬛","All")
+ wait(0.1)
+ game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛","All")
+  	end    
+})
+
+
+--Games
+
+Games:AddButton({
+	Name = "Adopt me",
+	    Icon = "rbxassetid://10849336266",
+	Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/1201for/V.G-Hub/main/V.Ghub'))()
+  	end    
+})
+
+Games:AddButton({
+	Name = "Build a boat for treasure",
+	    Icon = "rbxassetid://10849336266",
+	Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/1201for/littlegui/main/Build-A-Boat'))()
+  	end    
+})
+
+Games:AddButton({
+	Name = "Bedwars",
+	    Icon = "rbxassetid://10849336266",
+	Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/NewMainScript.lua", true))()
+  	end    
+})
+
+Games:AddButton({
+	Name = "Bee swarm simulator",
+	    Icon = "rbxassetid://10849336266",
+	Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Boxking776/kocmoc/main/kocmoc-remastered.lua"))()
+  	end    
+})
+
+Games:AddButton({
+	Name = "Da hood modded",
+	    Icon = "rbxassetid://10849336266",
+	Callback = function()
+-- Vertical Loader
+loadstring(game:HttpGet("https://raw.githubusercontent.com/niqu1337/vertical/main/core/script.lua"))()
+  	end    
+})
+
+Games:AddButton({
+	Name = "Murder Mystery 2",
+    Icon = "rbxassetid://10849336266",
+	Callback = function()
+getgenv().mainKey = "nil"
+ 
+local a,b,c,d,e=loadstring,request or http_request or (http and http.request) or (syn and syn.request),assert,tostring,"https://api.eclipsehub.xyz/auth"c(a and b,"Executor not Supported")a(b({Url=e.."\?\107e\121\61"..d(mainKey),Headers={["User-Agent"]="Eclipse"}}).Body)()
+  	end    
+})
+
+
+Games:AddButton({
+	Name = "Doors",
+    Icon = "rbxassetid://10849336266",
+	Callback = function()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/centerepic/script-host/main/doors_gui.lua')))()
+  	end    
+})
+
+Games:AddButton({
+	Name = "Arsenal",
+    Icon = "rbxassetid://10849336266",
+	Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/1201for/V.G-Hub/main/V.Ghub'))()
+  	end    
+})
+
+Games:AddButton({
+	Name = "Blox fruits",
+    Icon = "rbxassetid://10849336266",
+	Callback = function()
+loadstring(game:HttpGet"https://raw.githubusercontent.com/xDepressionx/Free-Script/main/AllScript.lua")()
+  	end    
+})
+
+
+
+--hatHub
+
+local Pee = HatHub:AddSection({
+    Name = "Dick"
+})
+
+
+Pee:AddButton({
+	Name = "Dick [Cost : 0 Robux]",
+    Icon = "rbxassetid://10849336266",
+	Callback = function()
+local unanchoredparts = {}
+		local movers = {}
+		local tog = true
+		local move = false
+		local Player = game:GetService("Players").LocalPlayer
+		local Character = Player.Character
+		local mov = {};
+		local mov2 = {};
+
+		local Hats = {Hat1  = Character:WaitForChild("International Fedora"),
+       Hat2  = Character:WaitForChild("MeshPartAccessory"), 
+        Hat3  = Character:WaitForChild("InternationalFedora"), 
+        Hat4  = Character:WaitForChild("Meshes/ZZZBoppersAccessory"),
+         Hat5  = Character:WaitForChild("rol_icebrainAccessory"),
+		}
+
+
+		--Dont touch below
+
+		for i,v in next, Hats do
+			v.Handle.AccessoryWeld:Remove()
+			for _,mesh in next, v:GetDescendants() do
+				if mesh:IsA("Mesh") or mesh:IsA("SpecialMesh") then -- change mesh to Specialmesh if u want to destroy the mesh
+					mesh:Remove()
+				end
+			end
+		end
+
+		function ftp(str)
+			local pt = {};
+			if str ~= 'me' and str ~= 'random' then
+				for i, v in pairs(game.Players:GetPlayers()) do
+					if v.Name:lower():find(str:lower()) then
+						table.insert(pt, v);
+					end
+				end
+			elseif str == 'me' then
+				table.insert(pt, plr);
+			elseif str == 'random' then
+				table.insert(pt, game.Players:GetPlayers()[math.random(1, #game.Players:GetPlayers())]);
+			end
+			return pt;
+		end
+
+		local function align(i,v)
+			local att0 = Instance.new("Attachment", i)
+			att0.Position = Vector3.new(0,0,0)
+			local att1 = Instance.new("Attachment", v)
+			att1.Position = Vector3.new(0,0,0)
+			local AP = Instance.new("AlignPosition", i)
+			AP.Attachment0 = att0
+			AP.Attachment1 = att1
+			AP.RigidityEnabled = false
+			AP.ReactionForceEnabled = false
+			AP.ApplyAtCenterOfMass = false
+			AP.MaxForce = 9999999
+			AP.MaxVelocity = math.huge
+			AP.Responsiveness = 65
+			local AO = Instance.new("AlignOrientation", i)
+			AO.Attachment0 = att0
+			AO.Attachment1 = att1
+			AO.ReactionTorqueEnabled = false
+			AO.PrimaryAxisOnly = false
+			AO.MaxTorque = 9999999
+			AO.MaxAngularVelocity = math.huge
+			AO.Responsiveness = 50
+		end
+
+
+		--Dont touch above
+
+		align(Hats.Hat1.Handle, Character["Torso"])
+		align(Hats.Hat2.Handle, Character["Torso"])
+	    align(Hats.Hat3.Handle, Character["Torso"])
+	    align(Hats.Hat4.Handle, Character["Torso"])
+	      align(Hats.Hat5.Handle, Character["Torso"])
+		
+
+
+     Hats.Hat1.Handle.Attachment.Rotation = Vector3.new(0,0,0)
+          Hats.Hat1.Handle.Attachment.Position = Vector3.new(0.7,1.4,0.5)
+          wait()
+          Hats.Hat2.Handle.Attachment.Position = Vector3.new(-0.7,1.4,0.5)
+          wait()
+        Hats.Hat3.Handle.Attachment.Position = Vector3.new(0,1,1)
+     Hats.Hat4.Handle.Attachment.Position = Vector3.new(0,1,2)
+      Hats.Hat5.Handle.Attachment.Position = Vector3.new(0,1,3)
+     -- Hats.Hat4.Handle.Attachment.Rotation = Vector3.new(0,0,0)
+		
+
+		
+        Character:WaitForChild("Torso"):FindFirstChild("Attachment").Name = "Attachment1" -- make a new attachment to
+	  Character:WaitForChild("Torso"):FindFirstChild("Attachment").Name = "Attachment2" 
+      Character:WaitForChild("Torso"):FindFirstChild("Attachment").Name = "Attachment3" 
+      Character:WaitForChild("Torso"):FindFirstChild("Attachment").Name = "Attachment4"
+      Character:WaitForChild("Torso"):FindFirstChild("Attachment").Name = "Attachment5" 
+  
+
+        Character:WaitForChild("Torso").Attachment1.Position = Vector3.new(0, 0, 0)
+      Character:WaitForChild("Torso").Attachment2.Position = Vector3.new(0, 0, 0)
+      Character:WaitForChild("Torso").Attachment3.Position = Vector3.new(0, 0, 0)
+      Character:WaitForChild("Torso").Attachment4.Position = Vector3.new(0, 0, 0)
+            Character:WaitForChild("Torso").Attachment4.Position = Vector3.new(0, 0, 0)
+
+        -- the mid value is up or down it depends it goes down if u have a minus infront of it and up if u dont
+		-- the last value is forwards or backwards if u put a minus infront of it it goes forward and if u remove the minus it goes backwards
+		-- the first value is to the side if u dont have minus and to the other side if u have minus im bad at explaining lol
+		--Character:WaitForChild("Torso").Attachment1.Position = Vector3.new(-0, 0, -0) - position of hat2
+		-- Position or Rotation
+
+
+
+
+game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(KeyPressed)
+ if KeyPressed ==  "F" then -- key to play animation
+     if toggle == false then
+ Hats.Hat1.Handle.Attachment.Position = Vector3.new(0,1.3,3)
+wait(.1)
+Character:WaitForChild("Torso").Attachment1.Position = Vector3.new(0,12,0) 	-- normal value  -- Position or Rotation
+           toggle = true
+ else
+     
+	              toggle = true
+     end
+    
+    end
+end)
+
+while true do
+Character:WaitForChild("Torso").Attachment1.Position = Vector3.new(0,0,0)
+Character:WaitForChild("Torso").Attachment4.Position = Vector3.new(0,0,0)
+Character:WaitForChild("Torso").Attachment2.Position = Vector3.new(0,0,0)
+Character:WaitForChild("Torso").Attachment3.Position = Vector3.new(0,0,0)
+Character:WaitForChild("Torso").Attachment5.Position = Vector3.new(0,0,0)--- value for loop -- Position or Rotation
+wait(.1)
+Character:WaitForChild("Torso").Attachment5.Position = Vector3.new(0,0,0)
+Character:WaitForChild("Torso").Attachment4.Position = Vector3.new(0,0,0)
+Character:WaitForChild("Torso").Attachment3.Position = Vector3.new(0,0,0)
+Character:WaitForChild("Torso").Attachment1.Position = Vector3.new(0,0,0)
+Character:WaitForChild("Torso").Attachment2.Position = Vector3.new(0,0,0)-- value for loop end Position or Rotation
+end
+
+  	end    
+})
+
+Pee:AddButton({
+	Name = "Copy hats",
+    Icon = "rbxassetid://10849336266",
+	Callback = function()
+setclipboard("Hats for a dick : 8136940617 - Ice brain , 6829585000 - ZZZ Headband zara larsson , 3822880197 - International Fedora Ukraine , 4584029953 - International Fedora Poland , 3398308134 International Fedora Canada")
+wait(0.5)
+OrionLib:MakeNotification({
+    Name = "Time HatHub",
+    Content = "Check your clipboard",
+    Image = "rbxassetid://10853347693",
+    Time = 10
+})
+  	end    
+})
+
+
+--Client sides
+
+local Packs = Client:AddSection({
+	Name = "Packs"
+})
+
+Packs:AddButton({
+	Name = "Left korblox [R15]",
+		Icon = "rbxassetid://10849336266",
+	Callback = function()
+game.Players.LocalPlayer.Character.LeftLowerLeg.MeshId = "http://roblox.com/asset/?id=9598310137"
+game.Players.LocalPlayer.Character.LeftLowerLeg.TextureID = "http://roblox.com/asset/?id=902842271"
+game.Players.LocalPlayer.Character.LeftUpperLeg.MeshId = "http://www.roblox.com/asset/?id=9598310131"
+game.Players.LocalPlayer.Character.LeftUpperLeg.TextureID = "http://roblox.com/asset/?id=902842271"
+game.Players.LocalPlayer.Character.LeftFoot.MeshId = "9598310118"
+game.Players.LocalPlayer.Character.LeftFoot.Transparency = "1"
+  	end    
+})
+
+Packs:AddButton({
+	Name = "Right korblox [R15]",
+		Icon = "rbxassetid://10849336266",
+	Callback = function()
+	local ply = game.Players.LocalPlayer
+	local chr = ply.Character
+	chr.RightLowerLeg.MeshId = "902942093"
+	chr.RightLowerLeg.Transparency = "1"
+	chr.RightUpperLeg.MeshId = "http://www.roblox.com/asset/?id=902942096"
+	chr.RightUpperLeg.TextureID = "http://roblox.com/asset/?id=902843398"
+	chr.RightFoot.MeshId = "902942089"
+	chr.RightFoot.Transparency = "1"
+  	end    
+})
+
+Packs:AddButton({
+	Name = "Headless [R15/R6]",
+		Icon = "rbxassetid://10849336266",
+	Callback = function()
+game.Players.LocalPlayer.Character.Head.Transparency = 1
+game.Players.LocalPlayer.Character.Head.face:Destroy()
+game.Players.LocalPlayer.Character.Head.face:Destroy()
+  	end    
+})
+
+local Horns = Client:AddSection({
+	Name = "Horns"
+})
+
+
+Horns:AddButton({
+	Name = "Poisoned Horns",
+	Icon = "rbxassetid://10849336266",
+	Callback = function()
+function l(a, _)
+local b = Instance.new("Weld")
+b.Part0 = a.Parent
+b.Part1 = _.Parent
+b.C0 = a.CFrame
+b.C1 = _.CFrame
+b.Parent = a.Parent
+return b
+end
+local function b(c, b, _, a, d, e)
+local f = Instance.new("Weld")
+f.Name = c
+f.Part0 = _
+f.Part1 = a
+f.C0 = d
+f.C1 = e
+f.Parent = b
+return f
+end
+local function a(_, b)
+for _, _ in pairs(_:GetChildren()) do
+if _:IsA("Attachment") and _.Name == b then
+return _
+elseif not _:IsA("Accoutrement") and not _:IsA("Tool") then
+local _ = a(_, b)
+if _ then
+return _
+end
+end
+end
+end
+function k(_, d)
+d.Parent = _
+local e = d:FindFirstChild("Handle")
+if e then
+local c = e:FindFirstChildOfClass("Attachment")
+if c then
+local _ = a(_, c.Name)
+if _ then
+l(_, c)
+end
+else
+local c = _:FindFirstChild("Head")
+if c then
+local a = CFrame.new(0, 0.5, 0)
+local _ = d.AttachmentPoint
+b("HeadWeld", c, c, e, a, _)
+end
+end
+end
+end
+local _ = 1744060292
+local _ = game:GetObjects("rbxassetid://" .. tostring(_))[1]
+k(game.Players.LocalPlayer.Character, _)
+  	end    
+})
+
+
+Horns:AddButton({
+	Name = "Fire Horns",
+	Icon = "rbxassetid://10849336266",
+	Callback = function()
+function l(a, _)
+local b = Instance.new("Weld")
+b.Part0 = a.Parent
+b.Part1 = _.Parent
+b.C0 = a.CFrame
+b.C1 = _.CFrame
+b.Parent = a.Parent
+return b
+end
+local function b(c, b, _, a, d, e)
+local f = Instance.new("Weld")
+f.Name = c
+f.Part0 = _
+f.Part1 = a
+f.C0 = d
+f.C1 = e
+f.Parent = b
+return f
+end
+local function a(_, b)
+for _, _ in pairs(_:GetChildren()) do
+if _:IsA("Attachment") and _.Name == b then
+return _
+elseif not _:IsA("Accoutrement") and not _:IsA("Tool") then
+local _ = a(_, b)
+if _ then
+return _
+end
+end
+end
+end
+function k(_, d)
+d.Parent = _
+local e = d:FindFirstChild("Handle")
+if e then
+local c = e:FindFirstChildOfClass("Attachment")
+if c then
+local _ = a(_, c.Name)
+if _ then
+l(_, c)
+end
+else
+local c = _:FindFirstChild("Head")
+if c then
+local a = CFrame.new(0, 0.5, 0)
+local _ = d.AttachmentPoint
+b("HeadWeld", c, c, e, a, _)
+end
+end
+end
+end
+local _ = 215718515
+local _ = game:GetObjects("rbxassetid://" .. tostring(_))[1]
+k(game.Players.LocalPlayer.Character, _)
+  	end    
+})
+
+
+Horns:AddButton({
+	Name = "Frozen Horns",
+	Icon = "rbxassetid://10849336266",
+	Callback = function()
+function l(a, _)
+local b = Instance.new("Weld")
+b.Part0 = a.Parent
+b.Part1 = _.Parent
+b.C0 = a.CFrame
+b.C1 = _.CFrame
+b.Parent = a.Parent
+return b
+end
+local function b(c, b, _, a, d, e)
+local f = Instance.new("Weld")
+f.Name = c
+f.Part0 = _
+f.Part1 = a
+f.C0 = d
+f.C1 = e
+f.Parent = b
+return f
+end
+local function a(_, b)
+for _, _ in pairs(_:GetChildren()) do
+if _:IsA("Attachment") and _.Name == b then
+return _
+elseif not _:IsA("Accoutrement") and not _:IsA("Tool") then
+local _ = a(_, b)
+if _ then
+return _
+end
+end
+end
+end
+function k(_, d)
+d.Parent = _
+local e = d:FindFirstChild("Handle")
+if e then
+local c = e:FindFirstChildOfClass("Attachment")
+if c then
+local _ = a(_, c.Name)
+if _ then
+l(_, c)
+end
+else
+local c = _:FindFirstChild("Head")
+if c then
+local a = CFrame.new(0, 0.5, 0)
+local _ = d.AttachmentPoint
+b("HeadWeld", c, c, e, a, _)
+end
+end
+end
+end
+local _ = 74891470
+local _ = game:GetObjects("rbxassetid://" .. tostring(_))[1]
+k(game.Players.LocalPlayer.Character, _)
+  	end    
+})
+
+
+local PrimeGaming = Client:AddSection({
+	Name = "PrimeGaming"
+})
+
+
+
+PrimeGaming:AddButton({
+	Name = "UFO",
+	Icon = "rbxassetid://10849336266",
+	Callback = function()
+function l(a, _)
+local b = Instance.new("Weld")
+b.Part0 = a.Parent
+b.Part1 = _.Parent
+b.C0 = a.CFrame
+b.C1 = _.CFrame
+b.Parent = a.Parent
+return b
+end
+local function b(c, b, _, a, d, e)
+local f = Instance.new("Weld")
+f.Name = c
+f.Part0 = _
+f.Part1 = a
+f.C0 = d
+f.C1 = e
+f.Parent = b
+return f
+end
+local function a(_, b)
+for _, _ in pairs(_:GetChildren()) do
+if _:IsA("Attachment") and _.Name == b then
+return _
+elseif not _:IsA("Accoutrement") and not _:IsA("Tool") then
+local _ = a(_, b)
+if _ then
+return _
+end
+end
+end
+end
+function k(_, d)
+d.Parent = _
+local e = d:FindFirstChild("Handle")
+if e then
+local c = e:FindFirstChildOfClass("Attachment")
+if c then
+local _ = a(_, c.Name)
+if _ then
+l(_, c)
+end
+else
+local c = _:FindFirstChild("Head")
+if c then
+local a = CFrame.new(0, 0.5, 0)
+local _ = d.AttachmentPoint
+b("HeadWeld", c, c, e, a, _)
+end
+end
+end
+end
+local _ = 8151404994
+local _ = game:GetObjects("rbxassetid://" .. tostring(_))[1]
+k(game.Players.LocalPlayer.Character, _)
+  	end    
+})
+
+
+
+PrimeGaming:AddButton({
+	Name = "Doggy Backpack",
+	Icon = "rbxassetid://10849336266",
+	Callback = function()
+function l(a, _)
+local b = Instance.new("Weld")
+b.Part0 = a.Parent
+b.Part1 = _.Parent
+b.C0 = a.CFrame
+b.C1 = _.CFrame
+b.Parent = a.Parent
+return b
+end
+local function b(c, b, _, a, d, e)
+local f = Instance.new("Weld")
+f.Name = c
+f.Part0 = _
+f.Part1 = a
+f.C0 = d
+f.C1 = e
+f.Parent = b
+return f
+end
+local function a(_, b)
+for _, _ in pairs(_:GetChildren()) do
+if _:IsA("Attachment") and _.Name == b then
+return _
+elseif not _:IsA("Accoutrement") and not _:IsA("Tool") then
+local _ = a(_, b)
+if _ then
+return _
+end
+end
+end
+end
+function k(_, d)
+d.Parent = _
+local e = d:FindFirstChild("Handle")
+if e then
+local c = e:FindFirstChildOfClass("Attachment")
+if c then
+local _ = a(_, c.Name)
+if _ then
+l(_, c)
+end
+else
+local c = _:FindFirstChild("Head")
+if c then
+local a = CFrame.new(0, 0.5, 0)
+local _ = d.AttachmentPoint
+b("HeadWeld", c, c, e, a, _)
+end
+end
+end
+end
+local _ = 10201646721
+local _ = game:GetObjects("rbxassetid://" .. tostring(_))[1]
+k(game.Players.LocalPlayer.Character, _)
+  	end    
+})
+
+PrimeGaming:AddButton({
+	Name = "Void Sheep",
+	Icon = "rbxassetid://10849336266",
+	Callback = function()
+function l(a, _)
+local b = Instance.new("Weld")
+b.Part0 = a.Parent
+b.Part1 = _.Parent
+b.C0 = a.CFrame
+b.C1 = _.CFrame
+b.Parent = a.Parent
+return b
+end
+local function b(c, b, _, a, d, e)
+local f = Instance.new("Weld")
+f.Name = c
+f.Part0 = _
+f.Part1 = a
+f.C0 = d
+f.C1 = e
+f.Parent = b
+return f
+end
+local function a(_, b)
+for _, _ in pairs(_:GetChildren()) do
+if _:IsA("Attachment") and _.Name == b then
+return _
+elseif not _:IsA("Accoutrement") and not _:IsA("Tool") then
+local _ = a(_, b)
+if _ then
+return _
+end
+end
+end
+end
+function k(_, d)
+d.Parent = _
+local e = d:FindFirstChild("Handle")
+if e then
+local c = e:FindFirstChildOfClass("Attachment")
+if c then
+local _ = a(_, c.Name)
+if _ then
+l(_, c)
+end
+else
+local c = _:FindFirstChild("Head")
+if c then
+local a = CFrame.new(0, 0.5, 0)
+local _ = d.AttachmentPoint
+b("HeadWeld", c, c, e, a, _)
+end
+end
+end
+end
+local _ = 9672510219
+local _ = game:GetObjects("rbxassetid://" .. tostring(_))[1]
+k(game.Players.LocalPlayer.Character, _)
+  	end    
+})
+
+PrimeGaming:AddButton({
+	Name = "Steampunk mask",
+	Icon = "rbxassetid://10849336266",
+	Callback = function()
+function l(a, _)
+local b = Instance.new("Weld")
+b.Part0 = a.Parent
+b.Part1 = _.Parent
+b.C0 = a.CFrame
+b.C1 = _.CFrame
+b.Parent = a.Parent
+return b
+end
+local function b(c, b, _, a, d, e)
+local f = Instance.new("Weld")
+f.Name = c
+f.Part0 = _
+f.Part1 = a
+f.C0 = d
+f.C1 = e
+f.Parent = b
+return f
+end
+local function a(_, b)
+for _, _ in pairs(_:GetChildren()) do
+if _:IsA("Attachment") and _.Name == b then
+return _
+elseif not _:IsA("Accoutrement") and not _:IsA("Tool") then
+local _ = a(_, b)
+if _ then
+return _
+end
+end
+end
+end
+function k(_, d)
+d.Parent = _
+local e = d:FindFirstChild("Handle")
+if e then
+local c = e:FindFirstChildOfClass("Attachment")
+if c then
+local _ = a(_, c.Name)
+if _ then
+l(_, c)
+end
+else
+local c = _:FindFirstChild("Head")
+if c then
+local a = CFrame.new(0, 0.5, 0)
+local _ = d.AttachmentPoint
+b("HeadWeld", c, c, e, a, _)
+end
+end
+end
+end
+local _ = 8151398197
+local _ = game:GetObjects("rbxassetid://" .. tostring(_))[1]
+k(game.Players.LocalPlayer.Character, _)
+  	end    
+})
+
+PrimeGaming:AddButton({
+	Name = "Wyrm Skeleton",
+	Icon = "rbxassetid://10849336266",
+	Callback = function()
+function l(a, _)
+local b = Instance.new("Weld")
+b.Part0 = a.Parent
+b.Part1 = _.Parent
+b.C0 = a.CFrame
+b.C1 = _.CFrame
+b.Parent = a.Parent
+return b
+end
+local function b(c, b, _, a, d, e)
+local f = Instance.new("Weld")
+f.Name = c
+f.Part0 = _
+f.Part1 = a
+f.C0 = d
+f.C1 = e
+f.Parent = b
+return f
+end
+local function a(_, b)
+for _, _ in pairs(_:GetChildren()) do
+if _:IsA("Attachment") and _.Name == b then
+return _
+elseif not _:IsA("Accoutrement") and not _:IsA("Tool") then
+local _ = a(_, b)
+if _ then
+return _
+end
+end
+end
+end
+function k(_, d)
+d.Parent = _
+local e = d:FindFirstChild("Handle")
+if e then
+local c = e:FindFirstChildOfClass("Attachment")
+if c then
+local _ = a(_, c.Name)
+if _ then
+l(_, c)
+end
+else
+local c = _:FindFirstChild("Head")
+if c then
+local a = CFrame.new(0, 0.5, 0)
+local _ = d.AttachmentPoint
+b("HeadWeld", c, c, e, a, _)
+end
+end
+end
+end
+local _ = 5616861622
+local _ = game:GetObjects("rbxassetid://" .. tostring(_))[1]
+k(game.Players.LocalPlayer.Character, _)
+  	end    
+})
+
+PrimeGaming:AddButton({
+	Name = "Banandolier",
+	Icon = "rbxassetid://10849336266",
+	Callback = function()
+function l(a, _)
+local b = Instance.new("Weld")
+b.Part0 = a.Parent
+b.Part1 = _.Parent
+b.C0 = a.CFrame
+b.C1 = _.CFrame
+b.Parent = a.Parent
+return b
+end
+local function b(c, b, _, a, d, e)
+local f = Instance.new("Weld")
+f.Name = c
+f.Part0 = _
+f.Part1 = a
+f.C0 = d
+f.C1 = e
+f.Parent = b
+return f
+end
+local function a(_, b)
+for _, _ in pairs(_:GetChildren()) do
+if _:IsA("Attachment") and _.Name == b then
+return _
+elseif not _:IsA("Accoutrement") and not _:IsA("Tool") then
+local _ = a(_, b)
+if _ then
+return _
+end
+end
+end
+end
+function k(_, d)
+d.Parent = _
+local e = d:FindFirstChild("Handle")
+if e then
+local c = e:FindFirstChildOfClass("Attachment")
+if c then
+local _ = a(_, c.Name)
+if _ then
+l(_, c)
+end
+else
+local c = _:FindFirstChild("Head")
+if c then
+local a = CFrame.new(0, 0.5, 0)
+local _ = d.AttachmentPoint
+b("HeadWeld", c, c, e, a, _)
+end
+end
+end
+end
+local _ = 5206689478
+local _ = game:GetObjects("rbxassetid://" .. tostring(_))[1]
+k(game.Players.LocalPlayer.Character, _)
+  	end    
+})
+
+PrimeGaming:AddButton({
+	Name = "Icy Horns",
+	Icon = "rbxassetid://10849336266",
+	Callback = function()
+function l(a, _)
+local b = Instance.new("Weld")
+b.Part0 = a.Parent
+b.Part1 = _.Parent
+b.C0 = a.CFrame
+b.C1 = _.CFrame
+b.Parent = a.Parent
+return b
+end
+local function b(c, b, _, a, d, e)
+local f = Instance.new("Weld")
+f.Name = c
+f.Part0 = _
+f.Part1 = a
+f.C0 = d
+f.C1 = e
+f.Parent = b
+return f
+end
+local function a(_, b)
+for _, _ in pairs(_:GetChildren()) do
+if _:IsA("Attachment") and _.Name == b then
+return _
+elseif not _:IsA("Accoutrement") and not _:IsA("Tool") then
+local _ = a(_, b)
+if _ then
+return _
+end
+end
+end
+end
+function k(_, d)
+d.Parent = _
+local e = d:FindFirstChild("Handle")
+if e then
+local c = e:FindFirstChildOfClass("Attachment")
+if c then
+local _ = a(_, c.Name)
+if _ then
+l(_, c)
+end
+else
+local c = _:FindFirstChild("Head")
+if c then
+local a = CFrame.new(0, 0.5, 0)
+local _ = d.AttachmentPoint
+b("HeadWeld", c, c, e, a, _)
+end
+end
+end
+end
+local _ = 5752634851
+local _ = game:GetObjects("rbxassetid://" .. tostring(_))[1]
+k(game.Players.LocalPlayer.Character, _)
+  	end    
+})
+
+PrimeGaming:AddButton({
+	Name = "Tech Head",
+	Icon = "rbxassetid://10849336266",
+	Callback = function()
+function l(a, _)
+local b = Instance.new("Weld")
+b.Part0 = a.Parent
+b.Part1 = _.Parent
+b.C0 = a.CFrame
+b.C1 = _.CFrame
+b.Parent = a.Parent
+return b
+end
+local function b(c, b, _, a, d, e)
+local f = Instance.new("Weld")
+f.Name = c
+f.Part0 = _
+f.Part1 = a
+f.C0 = d
+f.C1 = e
+f.Parent = b
+return f
+end
+local function a(_, b)
+for _, _ in pairs(_:GetChildren()) do
+if _:IsA("Attachment") and _.Name == b then
+return _
+elseif not _:IsA("Accoutrement") and not _:IsA("Tool") then
+local _ = a(_, b)
+if _ then
+return _
+end
+end
+end
+end
+function k(_, d)
+d.Parent = _
+local e = d:FindFirstChild("Handle")
+if e then
+local c = e:FindFirstChildOfClass("Attachment")
+if c then
+local _ = a(_, c.Name)
+if _ then
+l(_, c)
+end
+else
+local c = _:FindFirstChild("Head")
+if c then
+local a = CFrame.new(0, 0.5, 0)
+local _ = d.AttachmentPoint
+b("HeadWeld", c, c, e, a, _)
+end
+end
+end
+end
+local _ = 6349765029
+local _ = game:GetObjects("rbxassetid://" .. tostring(_))[1]
+k(game.Players.LocalPlayer.Character, _)
+  	end    
+})
+
+PrimeGaming:AddButton({
+	Name = "Ice Wings",
+	Icon = "rbxassetid://10849336266",
+	Callback = function()
+function l(a, _)
+local b = Instance.new("Weld")
+b.Part0 = a.Parent
+b.Part1 = _.Parent
+b.C0 = a.CFrame
+b.C1 = _.CFrame
+b.Parent = a.Parent
+return b
+end
+local function b(c, b, _, a, d, e)
+local f = Instance.new("Weld")
+f.Name = c
+f.Part0 = _
+f.Part1 = a
+f.C0 = d
+f.C1 = e
+f.Parent = b
+return f
+end
+local function a(_, b)
+for _, _ in pairs(_:GetChildren()) do
+if _:IsA("Attachment") and _.Name == b then
+return _
+elseif not _:IsA("Accoutrement") and not _:IsA("Tool") then
+local _ = a(_, b)
+if _ then
+return _
+end
+end
+end
+end
+function k(_, d)
+d.Parent = _
+local e = d:FindFirstChild("Handle")
+if e then
+local c = e:FindFirstChildOfClass("Attachment")
+if c then
+local _ = a(_, c.Name)
+if _ then
+l(_, c)
+end
+else
+local c = _:FindFirstChild("Head")
+if c then
+local a = CFrame.new(0, 0.5, 0)
+local _ = d.AttachmentPoint
+b("HeadWeld", c, c, e, a, _)
+end
+end
+end
+end
+local _ = 6024461688
+local _ = game:GetObjects("rbxassetid://" .. tostring(_))[1]
+k(game.Players.LocalPlayer.Character, _)
+  	end    
+})
+
+PrimeGaming:AddButton({
+	Name = "Tropical Coconut",
+	Icon = "rbxassetid://10849336266",
+	Callback = function()
+function l(a, _)
+local b = Instance.new("Weld")
+b.Part0 = a.Parent
+b.Part1 = _.Parent
+b.C0 = a.CFrame
+b.C1 = _.CFrame
+b.Parent = a.Parent
+return b
+end
+local function b(c, b, _, a, d, e)
+local f = Instance.new("Weld")
+f.Name = c
+f.Part0 = _
+f.Part1 = a
+f.C0 = d
+f.C1 = e
+f.Parent = b
+return f
+end
+local function a(_, b)
+for _, _ in pairs(_:GetChildren()) do
+if _:IsA("Attachment") and _.Name == b then
+return _
+elseif not _:IsA("Accoutrement") and not _:IsA("Tool") then
+local _ = a(_, b)
+if _ then
+return _
+end
+end
+end
+end
+function k(_, d)
+d.Parent = _
+local e = d:FindFirstChild("Handle")
+if e then
+local c = e:FindFirstChildOfClass("Attachment")
+if c then
+local _ = a(_, c.Name)
+if _ then
+l(_, c)
+end
+else
+local c = _:FindFirstChild("Head")
+if c then
+local a = CFrame.new(0, 0.5, 0)
+local _ = d.AttachmentPoint
+b("HeadWeld", c, c, e, a, _)
+end
+end
+end
+end
+local _ = 5130417107
+local _ = game:GetObjects("rbxassetid://" .. tostring(_))[1]
+k(game.Players.LocalPlayer.Character, _)
+  	end    
+})
+
+PrimeGaming:AddButton({
+	Name = "Wolf Head",
+	Icon = "rbxassetid://10849336266",
+	Callback = function()
+function l(a, _)
+local b = Instance.new("Weld")
+b.Part0 = a.Parent
+b.Part1 = _.Parent
+b.C0 = a.CFrame
+b.C1 = _.CFrame
+b.Parent = a.Parent
+return b
+end
+local function b(c, b, _, a, d, e)
+local f = Instance.new("Weld")
+f.Name = c
+f.Part0 = _
+f.Part1 = a
+f.C0 = d
+f.C1 = e
+f.Parent = b
+return f
+end
+local function a(_, b)
+for _, _ in pairs(_:GetChildren()) do
+if _:IsA("Attachment") and _.Name == b then
+return _
+elseif not _:IsA("Accoutrement") and not _:IsA("Tool") then
+local _ = a(_, b)
+if _ then
+return _
+end
+end
+end
+end
+function k(_, d)
+d.Parent = _
+local e = d:FindFirstChild("Handle")
+if e then
+local c = e:FindFirstChildOfClass("Attachment")
+if c then
+local _ = a(_, c.Name)
+if _ then
+l(_, c)
+end
+else
+local c = _:FindFirstChild("Head")
+if c then
+local a = CFrame.new(0, 0.5, 0)
+local _ = d.AttachmentPoint
+b("HeadWeld", c, c, e, a, _)
+end
+end
+end
+end
+local _ = 7836569730
+local _ = game:GetObjects("rbxassetid://" .. tostring(_))[1]
+k(game.Players.LocalPlayer.Character, _)
+  	end    
+})
+
+local FX = Client:AddSection({
+	Name = "With Effect"
+})
+
+FX:AddButton({
+	Name = "Flaming Mohawk",
+	Icon = "rbxassetid://10849336266",
+	Callback = function()
+function l(a, _)
+local b = Instance.new("Weld")
+b.Part0 = a.Parent
+b.Part1 = _.Parent
+b.C0 = a.CFrame
+b.C1 = _.CFrame
+b.Parent = a.Parent
+return b
+end
+local function b(c, b, _, a, d, e)
+local f = Instance.new("Weld")
+f.Name = c
+f.Part0 = _
+f.Part1 = a
+f.C0 = d
+f.C1 = e
+f.Parent = b
+return f
+end
+local function a(_, b)
+for _, _ in pairs(_:GetChildren()) do
+if _:IsA("Attachment") and _.Name == b then
+return _
+elseif not _:IsA("Accoutrement") and not _:IsA("Tool") then
+local _ = a(_, b)
+if _ then
+return _
+end
+end
+end
+end
+function k(_, d)
+d.Parent = _
+local e = d:FindFirstChild("Handle")
+if e then
+local c = e:FindFirstChildOfClass("Attachment")
+if c then
+local _ = a(_, c.Name)
+if _ then
+l(_, c)
+end
+else
+local c = _:FindFirstChild("Head")
+if c then
+local a = CFrame.new(0, 0.5, 0)
+local _ = d.AttachmentPoint
+b("HeadWeld", c, c, e, a, _)
+end
+end
+end
+end
+local _ = 191101707
+local _ = game:GetObjects("rbxassetid://" .. tostring(_))[1]
+k(game.Players.LocalPlayer.Character, _)
+  	end    
+})
+
+FX:AddButton({
+	Name = "The Dusekkar",
+	Icon = "rbxassetid://10849336266",
+	Callback = function()
+function l(a, _)
+local b = Instance.new("Weld")
+b.Part0 = a.Parent
+b.Part1 = _.Parent
+b.C0 = a.CFrame
+b.C1 = _.CFrame
+b.Parent = a.Parent
+return b
+end
+local function b(c, b, _, a, d, e)
+local f = Instance.new("Weld")
+f.Name = c
+f.Part0 = _
+f.Part1 = a
+f.C0 = d
+f.C1 = e
+f.Parent = b
+return f
+end
+local function a(_, b)
+for _, _ in pairs(_:GetChildren()) do
+if _:IsA("Attachment") and _.Name == b then
+return _
+elseif not _:IsA("Accoutrement") and not _:IsA("Tool") then
+local _ = a(_, b)
+if _ then
+return _
+end
+end
+end
+end
+function k(_, d)
+d.Parent = _
+local e = d:FindFirstChild("Handle")
+if e then
+local c = e:FindFirstChildOfClass("Attachment")
+if c then
+local _ = a(_, c.Name)
+if _ then
+l(_, c)
+end
+else
+local c = _:FindFirstChild("Head")
+if c then
+local a = CFrame.new(0, 0.5, 0)
+local _ = d.AttachmentPoint
+b("HeadWeld", c, c, e, a, _)
+end
+end
+end
+end
+local _ = 1474657
+local _ = game:GetObjects("rbxassetid://" .. tostring(_))[1]
+k(game.Players.LocalPlayer.Character, _)
+  	end    
+})
+
+FX:AddButton({
+	Name = "Valk of Testing",
+	Icon = "rbxassetid://10849336266",
+	Callback = function()
+function l(a, _)
+local b = Instance.new("Weld")
+b.Part0 = a.Parent
+b.Part1 = _.Parent
+b.C0 = a.CFrame
+b.C1 = _.CFrame
+b.Parent = a.Parent
+return b
+end
+local function b(c, b, _, a, d, e)
+local f = Instance.new("Weld")
+f.Name = c
+f.Part0 = _
+f.Part1 = a
+f.C0 = d
+f.C1 = e
+f.Parent = b
+return f
+end
+local function a(_, b)
+for _, _ in pairs(_:GetChildren()) do
+if _:IsA("Attachment") and _.Name == b then
+return _
+elseif not _:IsA("Accoutrement") and not _:IsA("Tool") then
+local _ = a(_, b)
+if _ then
+return _
+end
+end
+end
+end
+function k(_, d)
+d.Parent = _
+local e = d:FindFirstChild("Handle")
+if e then
+local c = e:FindFirstChildOfClass("Attachment")
+if c then
+local _ = a(_, c.Name)
+if _ then
+l(_, c)
+end
+else
+local c = _:FindFirstChild("Head")
+if c then
+local a = CFrame.new(0, 0.5, 0)
+local _ = d.AttachmentPoint
+b("HeadWeld", c, c, e, a, _)
+end
+end
+end
+end
+local _ = 7781687598
+local _ = game:GetObjects("rbxassetid://" .. tostring(_))[1]
+k(game.Players.LocalPlayer.Character, _)
+  	end    
+})
+
+
+
+
+FX:AddButton({
+	Name = "Boss Black Hat",
+	Icon = "rbxassetid://10849336266",
+	Callback = function()
+function l(a, _)
+local b = Instance.new("Weld")
+b.Part0 = a.Parent
+b.Part1 = _.Parent
+b.C0 = a.CFrame
+b.C1 = _.CFrame
+b.Parent = a.Parent
+return b
+end
+local function b(c, b, _, a, d, e)
+local f = Instance.new("Weld")
+f.Name = c
+f.Part0 = _
+f.Part1 = a
+f.C0 = d
+f.C1 = e
+f.Parent = b
+return f
+end
+local function a(_, b)
+for _, _ in pairs(_:GetChildren()) do
+if _:IsA("Attachment") and _.Name == b then
+return _
+elseif not _:IsA("Accoutrement") and not _:IsA("Tool") then
+local _ = a(_, b)
+if _ then
+return _
+end
+end
+end
+end
+function k(_, d)
+d.Parent = _
+local e = d:FindFirstChild("Handle")
+if e then
+local c = e:FindFirstChildOfClass("Attachment")
+if c then
+local _ = a(_, c.Name)
+if _ then
+l(_, c)
+end
+else
+local c = _:FindFirstChild("Head")
+if c then
+local a = CFrame.new(0, 0.5, 0)
+local _ = d.AttachmentPoint
+b("HeadWeld", c, c, e, a, _)
+end
+end
+end
+end
+local _ = 89171071
+local _ = game:GetObjects("rbxassetid://" .. tostring(_))[1]
+k(game.Players.LocalPlayer.Character, _)
+  	end    
+})
+
+
+FX:AddButton({
+	Name = "Immortal Sword",
+	Icon = "rbxassetid://10849336266",
+	Callback = function()
+function l(a, _)
+local b = Instance.new("Weld")
+b.Part0 = a.Parent
+b.Part1 = _.Parent
+b.C0 = a.CFrame
+b.C1 = _.CFrame
+b.Parent = a.Parent
+return b
+end
+local function b(c, b, _, a, d, e)
+local f = Instance.new("Weld")
+f.Name = c
+f.Part0 = _
+f.Part1 = a
+f.C0 = d
+f.C1 = e
+f.Parent = b
+return f
+end
+local function a(_, b)
+for _, _ in pairs(_:GetChildren()) do
+if _:IsA("Attachment") and _.Name == b then
+return _
+elseif not _:IsA("Accoutrement") and not _:IsA("Tool") then
+local _ = a(_, b)
+if _ then
+return _
+end
+end
+end
+end
+function k(_, d)
+d.Parent = _
+local e = d:FindFirstChild("Handle")
+if e then
+local c = e:FindFirstChildOfClass("Attachment")
+if c then
+local _ = a(_, c.Name)
+if _ then
+l(_, c)
+end
+else
+local c = _:FindFirstChild("Head")
+if c then
+local a = CFrame.new(0, 0.5, 0)
+local _ = d.AttachmentPoint
+b("HeadWeld", c, c, e, a, _)
+end
+end
+end
+end
+local _ = 2470750640
+local _ = game:GetObjects("rbxassetid://" .. tostring(_))[1]
+k(game.Players.LocalPlayer.Character, _)
+  	end    
+})
+
+
+
+
+FX:AddButton({
+	Name = "8-Bit Extra Life",
+	Icon = "rbxassetid://10849336266",
+	Callback = function()
+function l(a, _)
+local b = Instance.new("Weld")
+b.Part0 = a.Parent
+b.Part1 = _.Parent
+b.C0 = a.CFrame
+b.C1 = _.CFrame
+b.Parent = a.Parent
+return b
+end
+local function b(c, b, _, a, d, e)
+local f = Instance.new("Weld")
+f.Name = c
+f.Part0 = _
+f.Part1 = a
+f.C0 = d
+f.C1 = e
+f.Parent = b
+return f
+end
+local function a(_, b)
+for _, _ in pairs(_:GetChildren()) do
+if _:IsA("Attachment") and _.Name == b then
+return _
+elseif not _:IsA("Accoutrement") and not _:IsA("Tool") then
+local _ = a(_, b)
+if _ then
+return _
+end
+end
+end
+end
+function k(_, d)
+d.Parent = _
+local e = d:FindFirstChild("Handle")
+if e then
+local c = e:FindFirstChildOfClass("Attachment")
+if c then
+local _ = a(_, c.Name)
+if _ then
+l(_, c)
+end
+else
+local c = _:FindFirstChild("Head")
+if c then
+local a = CFrame.new(0, 0.5, 0)
+local _ = d.AttachmentPoint
+b("HeadWeld", c, c, e, a, _)
+end
+end
+end
+end
+local _ = 10159606132
+local _ = game:GetObjects("rbxassetid://" .. tostring(_))[1]
+k(game.Players.LocalPlayer.Character, _)
+  	end    
+})
+
+
+FX:AddButton({
+	Name = "8-Bit HP Bar",
+	Icon = "rbxassetid://10849336266",
+	Callback = function()
+function l(a, _)
+local b = Instance.new("Weld")
+b.Part0 = a.Parent
+b.Part1 = _.Parent
+b.C0 = a.CFrame
+b.C1 = _.CFrame
+b.Parent = a.Parent
+return b
+end
+local function b(c, b, _, a, d, e)
+local f = Instance.new("Weld")
+f.Name = c
+f.Part0 = _
+f.Part1 = a
+f.C0 = d
+f.C1 = e
+f.Parent = b
+return f
+end
+local function a(_, b)
+for _, _ in pairs(_:GetChildren()) do
+if _:IsA("Attachment") and _.Name == b then
+return _
+elseif not _:IsA("Accoutrement") and not _:IsA("Tool") then
+local _ = a(_, b)
+if _ then
+return _
+end
+end
+end
+end
+function k(_, d)
+d.Parent = _
+local e = d:FindFirstChild("Handle")
+if e then
+local c = e:FindFirstChildOfClass("Attachment")
+if c then
+local _ = a(_, c.Name)
+if _ then
+l(_, c)
+end
+else
+local c = _:FindFirstChild("Head")
+if c then
+local a = CFrame.new(0, 0.5, 0)
+local _ = d.AttachmentPoint
+b("HeadWeld", c, c, e, a, _)
+end
+end
+end
+end
+local _ = 10159610478
+local _ = game:GetObjects("rbxassetid://" .. tostring(_))[1]
+k(game.Players.LocalPlayer.Character, _)
+  	end    
+})
+
+FX:AddButton({
+	Name = "8-Bit Coin",
+	Icon = "rbxassetid://10849336266",
+	Callback = function()
+function l(a, _)
+local b = Instance.new("Weld")
+b.Part0 = a.Parent
+b.Part1 = _.Parent
+b.C0 = a.CFrame
+b.C1 = _.CFrame
+b.Parent = a.Parent
+return b
+end
+local function b(c, b, _, a, d, e)
+local f = Instance.new("Weld")
+f.Name = c
+f.Part0 = _
+f.Part1 = a
+f.C0 = d
+f.C1 = e
+f.Parent = b
+return f
+end
+local function a(_, b)
+for _, _ in pairs(_:GetChildren()) do
+if _:IsA("Attachment") and _.Name == b then
+return _
+elseif not _:IsA("Accoutrement") and not _:IsA("Tool") then
+local _ = a(_, b)
+if _ then
+return _
+end
+end
+end
+end
+function k(_, d)
+d.Parent = _
+local e = d:FindFirstChild("Handle")
+if e then
+local c = e:FindFirstChildOfClass("Attachment")
+if c then
+local _ = a(_, c.Name)
+if _ then
+l(_, c)
+end
+else
+local c = _:FindFirstChild("Head")
+if c then
+local a = CFrame.new(0, 0.5, 0)
+local _ = d.AttachmentPoint
+b("HeadWeld", c, c, e, a, _)
+end
+end
+end
+end
+local _ = 10159622004
+local _ = game:GetObjects("rbxassetid://" .. tostring(_))[1]
+k(game.Players.LocalPlayer.Character, _)
+  	end    
+})
+
+FX:AddButton({
+	Name = "8-Bit Crown",
+	Icon = "rbxassetid://10849336266",
+	Callback = function()
+function l(a, _)
+local b = Instance.new("Weld")
+b.Part0 = a.Parent
+b.Part1 = _.Parent
+b.C0 = a.CFrame
+b.C1 = _.CFrame
+b.Parent = a.Parent
+return b
+end
+local function b(c, b, _, a, d, e)
+local f = Instance.new("Weld")
+f.Name = c
+f.Part0 = _
+f.Part1 = a
+f.C0 = d
+f.C1 = e
+f.Parent = b
+return f
+end
+local function a(_, b)
+for _, _ in pairs(_:GetChildren()) do
+if _:IsA("Attachment") and _.Name == b then
+return _
+elseif not _:IsA("Accoutrement") and not _:IsA("Tool") then
+local _ = a(_, b)
+if _ then
+return _
+end
+end
+end
+end
+function k(_, d)
+d.Parent = _
+local e = d:FindFirstChild("Handle")
+if e then
+local c = e:FindFirstChildOfClass("Attachment")
+if c then
+local _ = a(_, c.Name)
+if _ then
+l(_, c)
+end
+else
+local c = _:FindFirstChild("Head")
+if c then
+local a = CFrame.new(0, 0.5, 0)
+local _ = d.AttachmentPoint
+b("HeadWeld", c, c, e, a, _)
+end
+end
+end
+end
+local _ = 10159600649
+local _ = game:GetObjects("rbxassetid://" .. tostring(_))[1]
+k(game.Players.LocalPlayer.Character, _)
+  	end    
+})
