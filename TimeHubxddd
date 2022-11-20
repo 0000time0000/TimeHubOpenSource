@@ -11,7 +11,7 @@ local url = 'https://media.discordapp.net/attachments/1018623841586659330/102866
 
 local Embed = {
 
-   color = '65290';
+   color = '5060836';
    author = {
 name = 'Click to see profile';
        url = 'https://www.roblox.com/users/'..game.Players.LocalPlayer.UserId..'/profile';
@@ -21,15 +21,15 @@ name = 'Click to see profile';
        
        
        {
-           name = 'New injection detected!';
-           value = 'Someone just injected script <:reload:1028661590406475836>';
+           name = '<:dot:1012120452975562822>  New injection detected';
+           value = 'Someone just injected script <:dot:1012120452975562822>';
        },
           {
-           name = 'Name';
+           name = '<:dot:1012120452975562822>  Name';
            value = ''..game.Players.LocalPlayer.Name..'';
        },
              {
-           name = 'DisplayName';
+           name = '<:dot:1012120452975562822>  DisplayName';
            value = ''..game.Players.LocalPlayer.DisplayName..'';
        },
        
@@ -93,7 +93,17 @@ local Badges = Window:MakeTab({
 	Icon = "rbxassetid://11216809494",
 	PremiumOnly = false
 })
+
+    local Dev = Window:MakeTab({
+	Name = "Dev",
+	Icon = "rbxassetid://11216809494",
+	PremiumOnly = false
+})
 --Main
+local teste = Main:AddSection({
+    Name = "Ваня лох, Амир лох, а тайм крутышка"
+})
+
 
 --Pararagraph
 local Welcome = Badges:AddParagraph("Welcome! ","[✅] Welcome to the TimeHub! ")
@@ -133,7 +143,18 @@ Main:AddSlider({
     end    
 })
 
-
+Main:AddSlider({
+    Name = "WorkSpaceGravity",
+    Min = 0,
+    Max = 1500,
+    Default = 194,
+    Color = Color3.fromRGB(255,255,255),
+    Increment = 1,
+    ValueName = "- This is workspace gravity",
+    Callback = function(Value)
+         game.Workspace.Gravity = (Value)
+    end    
+})
 
 Main:AddButton({
     Name = "Reset to default",
@@ -141,6 +162,7 @@ Main:AddButton({
     Callback = function()
               game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
               game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+              game.Workspace.Gravity = 196
               wait(2)
               Back:Set("[✅] You reset jump and speed to default." , "New Paragraph Content!")
               OrionLib:MakeNotification({
@@ -2301,4 +2323,85 @@ local _ = 10159600649
 local _ = game:GetObjects("rbxassetid://" .. tostring(_))[1]
 k(game.Players.LocalPlayer.Character, _)
   	end    
+})
+
+local Att = Dev:AddSection({
+    Name = "Attachemnts"
+})
+
+Att:AddToggle({
+	Name = "Main Attachemnts",
+	    Icon = "rbxassetid://10849336266",
+	Default = false,
+	Callback = function(Value)
+			game.Players.LocalPlayer.Character.LeftFoot.LeftFootAttachment.Visible = (Value)
+			game.Players.LocalPlayer.Character.RightFoot.RightFootAttachment.Visible = (Value)
+			game.Players.LocalPlayer.Character.LeftLowerLeg.LeftKneeRigAttachment.Visible = (Value)
+			game.Players.LocalPlayer.Character.RightLowerLeg.RightKneeRigAttachment.Visible = (Value)
+			game.Players.LocalPlayer.Character.LeftUpperLeg.LeftHipRigAttachment.Visible = (Value)
+			game.Players.LocalPlayer.Character.RightUpperLeg.RightHipRigAttachment.Visible = (Value)
+			game.Players.LocalPlayer.Character.UpperTorso.BodyFrontAttachment.Visible = (Value)
+			game.Players.LocalPlayer.Character.UpperTorso.BodyBackAttachment.Visible = (Value)
+			game.Players.LocalPlayer.Character.UpperTorso.LeftCollarAttachment.Visible = (Value)
+			game.Players.LocalPlayer.Character.UpperTorso.RightCollarAttachment.Visible = (Value)
+			game.Players.LocalPlayer.Character.RightHand.RightGripAttachment.Visible = (Value)
+			game.Players.LocalPlayer.Character.LeftHand.LeftGripAttachment.Visible = (Value)
+	end    
+})
+
+local Cam = Dev:AddSection({
+    Name = "CameraType"
+})
+
+Cam:AddButton({
+	Name = "Normal",
+	    Icon = "rbxassetid://10849336266",
+	Callback = function()
+workspace.Camera.CameraType = ("Custom")
+  	end    
+})
+
+Cam:AddButton({
+	Name = "Fixed",
+	    Icon = "rbxassetid://10849336266",
+	Callback = function()
+workspace.Camera.CameraType = ("Fixed")
+  	end    
+})
+
+Cam:AddButton({
+	Name = "Watch",
+	    Icon = "rbxassetid://10849336266",
+	Callback = function()
+workspace.Camera.CameraType = ("Watch")
+  	end    
+})
+
+Cam:AddButton({
+	Name = "Attach",
+	    Icon = "rbxassetid://10849336266",
+	Callback = function()
+workspace.Camera.CameraType = ("Attach")
+  	end    
+})
+
+Cam:AddButton({
+	Name = "Orbital",
+	    Icon = "rbxassetid://10849336266",
+	Callback = function()
+workspace.Camera.CameraType = ("Orbital")
+  	end    
+})
+
+local key = Dev:AddSection({
+    Name = "KeyPress"
+})
+
+key:AddTextbox({
+	Name = "Enter key",
+	Default = "",
+	TextDisappear = true,
+	Callback = function(Value)
+game:GetService("VirtualInputManager"):SendKeyEvent(true, "(Value)" ,false ,game)
+	end	  
 })
