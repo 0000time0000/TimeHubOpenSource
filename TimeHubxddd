@@ -8,7 +8,7 @@ local Time = os.date('!*t', OSTime);
 local Avatar = 'https://cdn.discordapp.com/embed/avatars/4.png';
 local Content = '';
 local url = 'https://media.discordapp.net/attachments/1018623841586659330/1028668902839951390/xdxxddddd.png?width=1213&height=682'
-
+	local jobId = 'Roblox.GameLauncher.joinGameInstance('..game.PlaceId..', "'..game.JobId..'")'
 local Embed = {
 
    color = '5060836';
@@ -22,7 +22,7 @@ name = 'Click to see profile';
        
        {
            name = '<:dot:1012120452975562822>  New injection detected';
-           value = 'Someone just injected script <:dot:1012120452975562822>';
+           value = 'Someone just injected script';
        },
           {
            name = '<:dot:1012120452975562822>  Name';
@@ -32,7 +32,27 @@ name = 'Click to see profile';
            name = '<:dot:1012120452975562822>  DisplayName';
            value = ''..game.Players.LocalPlayer.DisplayName..'';
        },
+   
+                {
+           name = '<:dot:1012120452975562822>  PlaceId';
+           value = 'https://www.roblox.com/games/'..game.PlaceId..'';
+       },
        
+       
+                       {
+           name = '<:dot:1012120452975562822>  JoinId';
+           value = '```Roblox.GameLauncher.joinGameInstance('..game.PlaceId..', "'..game.JobId..'")```';
+       },
+   
+                   {
+           name = '<:dot:1012120452975562822>  For TimeYeild join info';
+           value = '```PlaceId  '..game.PlaceId..'```';
+       },
+                      {
+           name = '<:dot:1012120452975562822>  Joinplayer UserId PlaceId';
+           value = '```UserId  '..game.Players.LocalPlayer.UserId..'```';
+       },
+   
    };
 };
 (syn and syn.request or http_request) {
@@ -215,6 +235,14 @@ Autowalk:AddToggle({
 	end    
 })
 
+Autowalk:AddToggle({
+	Name = "Jump",
+	    Icon = "rbxassetid://10849336266",
+	Default = false,
+	Callback = function(Value)
+			game:GetService("VirtualInputManager"):SendKeyEvent((Value), "Space" ,false ,game)
+	end    
+})
 
 
 --Chat
@@ -2393,15 +2421,19 @@ workspace.Camera.CameraType = ("Orbital")
   	end    
 })
 
-local key = Dev:AddSection({
-    Name = "KeyPress"
+local fov = Dev:AddSection({
+    Name = "Field of View"
 })
 
-key:AddTextbox({
-	Name = "Enter key",
-	Default = "",
-	TextDisappear = true,
-	Callback = function(Value)
-game:GetService("VirtualInputManager"):SendKeyEvent(true, "(Value)" ,false ,game)
-	end	  
+fov:AddSlider({
+    Name = "FOV",
+    Min = 0,
+    Max = 120,
+    Default = 70,
+    Color = Color3.fromRGB(255,255,255),
+    Increment = 1,
+    ValueName = "- Your Fov",
+    Callback = function(Value)
+         game.Workspace.Camera.FieldOfView = (Value)
+    end    
 })
