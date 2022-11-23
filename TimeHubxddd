@@ -3,7 +3,7 @@ local Window = OrionLib:MakeWindow({Name = "TimeHub [V-2.2]", Icon = "rbxassetid
 -- Delete if this will be not works on synapse
 wait(1)
 
-loadstring(game:HttpGet('https://raw.githubusercontent.com/NeverLeakingEZZZ/NIGGGGGEREZZZZ/main/FuckYouHOokScooopers'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/HookScopeNever/Don-tTryscopeMeImao/main/Xd'))()
 --Here is end
 
 
