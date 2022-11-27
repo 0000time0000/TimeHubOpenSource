@@ -268,10 +268,21 @@ messageDoneFiltering.OnClientEvent:Connect(function(message)
   end
   
     if msg:lower():sub(1,14) == "-adv" then
-game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("yea working","All")
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("TimeHub On Top","All")
+wait(0.6)
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Yea, im using timehub free ❌💸","All")
+wait(0.8)
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("dsc.gg/timegg","All")
+
   end
 
   if msg:lower():sub(1,15) == "-move rightward" then
+   keyrelease(keys["a"])
+   keypress(keys["d"])
+  end
+  
+  
+    if msg:lower():sub(1,15) == "-move rightward" then
    keyrelease(keys["a"])
    keypress(keys["d"])
   end
