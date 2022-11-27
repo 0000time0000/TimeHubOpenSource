@@ -7,7 +7,6 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/HookScopeNever/Don-tT
 --Here is end
 
 --Test controll
-
 --credits: Snip#3132
 -- Editted By Creo ^ Credits to creator above
 --Commands: move forward, -move backward, -move leftward, -move rightward, -shiftlock on, -shiftlock off, -stop moving, -dance, -dance1, -dance2, -dance3, -wave, -point, -laugh, -jump, -joke
