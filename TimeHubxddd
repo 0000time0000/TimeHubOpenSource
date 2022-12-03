@@ -1,5 +1,5 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "TimeHub [V-2.2]", Icon = "rbxassetid://10853316988", IntroIcon = "rbxassetid://10853316988", HidePremium = false, IntroEnabled = true, IntroText = "TimeHub!", SaveConfig = true, ConfigFolder = "TimeHubSaves"})
+local Window = OrionLib:MakeWindow({Name = "TimeHub Free / Version 2.0", Icon = "rbxassetid://10853316988", IntroIcon = "rbxassetid://10853316988", HidePremium = false, IntroEnabled = true, IntroText = "TimeHub!", SaveConfig = true, ConfigFolder = "TimeHubSaves"})
 -- Delete if this will be not works on synapse
 wait(1)
 
@@ -420,8 +420,6 @@ end)
 
 
 
-
-
 --test
 wait(1)
 OrionLib:MakeNotification({
@@ -475,10 +473,16 @@ local Badges = Window:MakeTab({
 	Icon = "rbxassetid://11216809494",
 	PremiumOnly = false
 })
---Main
-local teste = Main:AddSection({
-    Name = "Ваня лох, Амир лох, а тайм крутышка"
+
+
+    local Changelog = Window:MakeTab({
+	Name = "Changelog",
+	Icon = "rbxassetid://11216809494",
+	PremiumOnly = false
 })
+--Main
+Main:AddParagraph("Warning","Some script maybe will not working if u use free exploits. The best exploit is a SynapseX, if u found some outdated script contact TimeHub support.")
+
 
 
 --Pararagraph
@@ -490,43 +494,43 @@ local Pon4 = Badges:AddParagraph("Later..","[❌] ???")
 --WalkSpeed/JumpPower
 
 local Section = Main:AddSection({
-    Name = "WalkSpeed/JumpPower"
+    Name = "Player"
 })
 
 Main:AddSlider({
-    Name = "WalkSpeed",
+    Name = "Speed",
     Min = 0,
-    Max = 500,
+    Max = 300,
     Default = 16,
-    Color = Color3.fromRGB(255,255,255),
+    Color = Color3.fromRGB(255, 109, 99),
     Increment = 1,
-    ValueName = "- This is your speed",
+    ValueName = " ",
     Callback = function(Value)
          game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
     end    
 })
 
 Main:AddSlider({
-    Name = "JumpPower",
+    Name = "Jump",
     Min = 0,
     Max = 500,
     Default = 50,
-    Color = Color3.fromRGB(255,255,255),
+    Color = Color3.fromRGB(99, 190, 255),
     Increment = 1,
-    ValueName = "- This is jump power",
+    ValueName = " ",
     Callback = function(Value)
          game.Players.LocalPlayer.Character.Humanoid.JumpPower = (Value)
     end    
 })
 
 Main:AddSlider({
-    Name = "WorkSpaceGravity",
+    Name = "Gravity",
     Min = 0,
     Max = 1500,
     Default = 194,
-    Color = Color3.fromRGB(255,255,255),
+    Color = Color3.fromRGB(129, 255, 117),
     Increment = 1,
-    ValueName = "- This is workspace gravity",
+    ValueName = " ",
     Callback = function(Value)
          game.Workspace.Gravity = (Value)
     end    
@@ -555,6 +559,10 @@ local Autowalk = Main:AddSection({
     Name = "Autowalk"
 })
 
+Autowalk:AddButton({
+	Name = "Open AutoWalk toggles",
+	    Icon = "rbxassetid://10849336266",
+	Callback = function()
 Autowalk:AddToggle({
 	Name = "⬆",
 	    Icon = "rbxassetid://10849336266",
@@ -600,8 +608,186 @@ Autowalk:AddToggle({
 	end    
 })
 
+  	end    
+})
+
+
+local Other = Main:AddSection({
+    Name = "Other"
+})
+
+
+Other:AddButton({
+	Name = "BackFlip Bind [r15/r6]",
+	    Icon = "rbxassetid://10849336266",
+	Callback = function()
+	    wait(0)
+
+--[[ Info ]]--
+
+local ver = "2.00"
+local scriptname = "feFlip"
+
+
+--[[ Keybinds ]]--
+
+local FrontflipKey = Enum.KeyCode.Z
+local BackflipKey = Enum.KeyCode.X
+local AirjumpKey = Enum.KeyCode.B
+
+
+--[[ Dependencies ]]--
+
+local ca = game:GetService("ContextActionService")
+local zeezy = game:GetService("Players").LocalPlayer
+local h = 0.0174533
+local antigrav
+
+
+--[[ Functions ]]--
+
+function zeezyFrontflip(act,inp,obj)
+	if inp == Enum.UserInputState.Begin then
+		zeezy.Character.Humanoid:ChangeState("Jumping")
+		wait()
+		zeezy.Character.Humanoid.Sit = true
+		for i = 1,360 do 
+			delay(i/720,function()
+			zeezy.Character.Humanoid.Sit = true
+				zeezy.Character.HumanoidRootPart.CFrame = zeezy.Character.HumanoidRootPart.CFrame * CFrame.Angles(-h,0,0)
+			end)
+		end
+		wait(0.55)
+		zeezy.Character.Humanoid.Sit = false
+	end
+end
+
+function zeezyBackflip(act,inp,obj)
+	if inp == Enum.UserInputState.Begin then
+		zeezy.Character.Humanoid:ChangeState("Jumping")
+		wait()
+		zeezy.Character.Humanoid.Sit = true
+		for i = 1,360 do
+			delay(i/720,function()
+			zeezy.Character.Humanoid.Sit = true
+				zeezy.Character.HumanoidRootPart.CFrame = zeezy.Character.HumanoidRootPart.CFrame * CFrame.Angles(h,0,0)
+			end)
+		end
+		wait(0.55)
+		zeezy.Character.Humanoid.Sit = false
+	end
+end
+
+function zeezyAirjump(act,inp,obj)
+	if inp == Enum.UserInputState.Begin then
+		zeezy.Character:FindFirstChildOfClass'Humanoid':ChangeState("Seated")
+		wait()
+		zeezy.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")	
+	end
+end
+
+
+--[[ Binds ]]--
+
+ca:BindAction("zeezyFrontflip",zeezyFrontflip,false,FrontflipKey)
+ca:BindAction("zeezyBackflip",zeezyBackflip,false,BackflipKey)
+ca:BindAction("zeezyAirjump",zeezyAirjump,false,AirjumpKey)
+
+
+Other:AddParagraph("Backflip binds","[Z] - Front flip                                                                                                   [X] - Back flip")
+  	end    
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Other:AddButton({
+	Name = "Ball [r15/r6]",
+	    Icon = "rbxassetid://10849336266",
+	Callback = function()
+local UserInputService = game:GetService("UserInputService")
+local RunService = game:GetService("RunService")
+local Camera = workspace.CurrentCamera
+
+local SPEED_MULTIPLIER = 30
+local JUMP_POWER = 60
+local JUMP_GAP = 0.3
+
+local character = game.Players.LocalPlayer.Character
+
+for i,v in ipairs(character:GetDescendants()) do
+   if v:IsA("BasePart") then
+       v.CanCollide = false
+   end
+end
+
+local ball = character.HumanoidRootPart
+ball.Shape = Enum.PartType.Ball
+ball.Size = Vector3.new(5,5,5)
+local humanoid = character:WaitForChild("Humanoid")
+local params = RaycastParams.new()
+params.FilterType = Enum.RaycastFilterType.Blacklist
+params.FilterDescendantsInstances = {character}
+
+local tc = RunService.RenderStepped:Connect(function(delta)
+   ball.CanCollide = true
+   humanoid.PlatformStand = true
+if UserInputService:GetFocusedTextBox() then return end
+if UserInputService:IsKeyDown("W") then
+ball.RotVelocity -= Camera.CFrame.RightVector * delta * SPEED_MULTIPLIER
+end
+if UserInputService:IsKeyDown("A") then
+ball.RotVelocity -= Camera.CFrame.LookVector * delta * SPEED_MULTIPLIER
+end
+if UserInputService:IsKeyDown("S") then
+ball.RotVelocity += Camera.CFrame.RightVector * delta * SPEED_MULTIPLIER
+end
+if UserInputService:IsKeyDown("D") then
+ball.RotVelocity += Camera.CFrame.LookVector * delta * SPEED_MULTIPLIER
+end
+--ball.RotVelocity = ball.RotVelocity - Vector3.new(0,ball.RotVelocity.Y/50,0)
+end)
+
+UserInputService.JumpRequest:Connect(function()
+local result = workspace:Raycast(
+ball.Position,
+Vector3.new(
+0,
+-((ball.Size.Y/2)+JUMP_GAP),
+0
+),
+params
+)
+if result then
+ball.Velocity = ball.Velocity + Vector3.new(0,JUMP_POWER,0)
+end
+end)
+
+Camera.CameraSubject = ball
+humanoid.Died:Connect(function() tc:Disconnect() end)
+  	end    
+})
+
+
+
+
+
 
 --Chat
+
+Chat:AddParagraph("Warning","Using some features like TrashTalk and Bypass, maybe cause ban! Use it on your own risk. We are not responsible for your account")
+
 
 --TrashTalk
 
@@ -2709,29 +2895,7 @@ k(game.Players.LocalPlayer.Character, _)
   	end    
 })
 
-local Att = Dev:AddSection({
-    Name = "Attachemnts"
-})
 
-Att:AddToggle({
-	Name = "Main Attachemnts",
-	    Icon = "rbxassetid://10849336266",
-	Default = false,
-	Callback = function(Value)
-			game.Players.LocalPlayer.Character.LeftFoot.LeftFootAttachment.Visible = (Value)
-			game.Players.LocalPlayer.Character.RightFoot.RightFootAttachment.Visible = (Value)
-			game.Players.LocalPlayer.Character.LeftLowerLeg.LeftKneeRigAttachment.Visible = (Value)
-			game.Players.LocalPlayer.Character.RightLowerLeg.RightKneeRigAttachment.Visible = (Value)
-			game.Players.LocalPlayer.Character.LeftUpperLeg.LeftHipRigAttachment.Visible = (Value)
-			game.Players.LocalPlayer.Character.RightUpperLeg.RightHipRigAttachment.Visible = (Value)
-			game.Players.LocalPlayer.Character.UpperTorso.BodyFrontAttachment.Visible = (Value)
-			game.Players.LocalPlayer.Character.UpperTorso.BodyBackAttachment.Visible = (Value)
-			game.Players.LocalPlayer.Character.UpperTorso.LeftCollarAttachment.Visible = (Value)
-			game.Players.LocalPlayer.Character.UpperTorso.RightCollarAttachment.Visible = (Value)
-			game.Players.LocalPlayer.Character.RightHand.RightGripAttachment.Visible = (Value)
-			game.Players.LocalPlayer.Character.LeftHand.LeftGripAttachment.Visible = (Value)
-	end    
-})
 
 local Cam = Dev:AddSection({
     Name = "CameraType"
@@ -2793,3 +2957,9 @@ fov:AddSlider({
          game.Workspace.Camera.FieldOfView = (Value)
     end    
 })
+
+local Changes = Changelog:AddSection({
+	Name = "Changes"
+})
+
+Changes:AddParagraph("TimeHub v2.0.0","[=] Small changes                                                                           [+] Coloured player edit sliders                                                    [+] Added warning to tabs                                                                          [+] Added changelogs                                                                                   [+] Changed TimeHub name                                                                                   [+] Added backflip")
