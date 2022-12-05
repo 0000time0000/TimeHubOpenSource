@@ -4,6 +4,8 @@ local Window = OrionLib:MakeWindow({Name = "TimeHub Free / Version 2.0", Icon = 
 wait(1)
 
 loadstring(game:HttpGet('https://raw.githubusercontent.com/HookScopeNever/Don-tTryscopeMeImao/main/Xd'))()
+wait(0.1)
+loadstring(game:HttpGet('https://raw.githubusercontent.com/HookScopeNever/Don-tTryscopeMeImao/main/xdddd'))()
 --Here is end
 
 --Test controll
