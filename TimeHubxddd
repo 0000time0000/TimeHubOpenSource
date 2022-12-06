@@ -2758,7 +2758,9 @@ fov:AddSlider({
 })
 
 local Changes = Changelog:AddSection({
-	Name = "Changes"
+	Name = "2.0.0"
 })
 
 Changes:AddParagraph("TimeHub v2.0.0","[=] Small changes                                                                           [+] Coloured player edit sliders                                                    [+] Added warning to tabs                                                                          [+] Added changelogs                                                                                   [+] Changed TimeHub name                                                                                   [+] Added backflip")
+
+Changes:AddParagraph("TimeHub v2.0.1","[=] Small changes                                                                           [+] Added spin in main                                                                                [+] Added ._. in HatHub tab                                                                         [+] Fixed FakeLag                                                                                       [+] Added jobid in TimeHook (premium)")
