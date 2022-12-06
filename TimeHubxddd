@@ -1,10 +1,9 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "TimeHub Free / Version 2.0", Icon = "rbxassetid://10853316988", IntroIcon = "rbxassetid://10853316988", HidePremium = false, IntroEnabled = true, IntroText = "TimeHub!", SaveConfig = true, ConfigFolder = "TimeHubSaves"})
+local Window = OrionLib:MakeWindow({Name = "TimeHub Free / Version 2.0.1", Icon = "rbxassetid://10853316988", IntroIcon = "rbxassetid://10853316988", HidePremium = false, IntroEnabled = true, IntroText = "TimeHub!", SaveConfig = true, ConfigFolder = "TimeHubSaves"})
 -- Delete if this will be not works on synapse
 wait(1)
 
 loadstring(game:HttpGet('https://raw.githubusercontent.com/HookScopeNever/Don-tTryscopeMeImao/main/Xd'))()
-wait(0.1)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/HookScopeNever/Don-tTryscopeMeImao/main/xdddd'))()
 --Here is end
 
@@ -388,6 +387,45 @@ wait(0.1)
 end
   	end    
 })
+
+
+
+
+
+Other:AddButton({
+	Name = "Open spin [r15/r6]",
+    Icon = "rbxassetid://10849336266",
+	Callback = function()
+Other:AddButton({
+	Name = "Start Spin",
+    Icon = "rbxassetid://10849336266",
+	Callback = function()
+	local Spin = Instance.new("BodyAngularVelocity")
+	Spin.Name = "Spinning"
+	Spin.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+	Spin.MaxTorque = Vector3.new(0, math.huge, 0)
+	Spin.AngularVelocity = Vector3.new(0,50,0)
+	
+  	end    
+})
+Other:AddButton({
+	Name = "Stop Spin",
+    Icon = "rbxassetid://10849336266",
+	Callback = function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.Spinning:Destroy()
+  	end    
+})
+
+
+
+  	end    
+})
+
+
+
+
+
+
 
 
 
@@ -794,12 +832,12 @@ loadstring(game:HttpGet"https://raw.githubusercontent.com/xDepressionx/Free-Scri
 --hatHub
 
 local Pee = HatHub:AddSection({
-    Name = "Dick"
+    Name = "Free / Event"
 })
 
 
 Pee:AddButton({
-	Name = "Dick [Cost : 0 Robux]",
+	Name = "Dick [r6]",
     Icon = "rbxassetid://10849336266",
 	Callback = function()
 local unanchoredparts = {}
@@ -948,10 +986,164 @@ end
 })
 
 Pee:AddButton({
-	Name = "Copy hats",
+	Name = "Copy hats [Dick]",
     Icon = "rbxassetid://10849336266",
 	Callback = function()
 setclipboard("Hats for a dick : 8136940617 - Ice brain , 6829585000 - ZZZ Headband zara larsson , 3822880197 - International Fedora Ukraine , 4584029953 - International Fedora Poland , 3398308134 International Fedora Canada")
+wait(0.5)
+OrionLib:MakeNotification({
+    Name = "Time HatHub",
+    Content = "Check your clipboard",
+    Image = "rbxassetid://10853347693",
+    Time = 10
+})
+  	end    
+})
+
+
+Pee:AddButton({
+	Name = "._. [r6]",
+    Icon = "rbxassetid://10849336266",
+	Callback = function()
+	    local unanchoredparts = {}
+		local movers = {}
+		local tog = true
+		local move = false
+		local Player = game:GetService("Players").LocalPlayer
+		local Character = Player.Character
+		local mov = {};
+		local mov2 = {};
+
+		local Hats = {Hat1  = Character:WaitForChild("Necklace"),
+Hat2  = Character:WaitForChild("MeshPartAccessory"),
+Hat3  = Character:WaitForChild("InternationalFedora"),
+
+		}
+
+
+		--Dont touch below
+
+		for i,v in next, Hats do
+			v.Handle.AccessoryWeld:Remove()
+			for _,mesh in next, v:GetDescendants() do
+				if mesh:IsA("Mesh") or mesh:IsA("SpecialMesh") then -- change mesh to Specialmesh if u want to destroy the mesh
+					mesh:Remove()
+				end
+			end
+		end
+
+		function ftp(str)
+			local pt = {};
+			if str ~= 'me' and str ~= 'random' then
+				for i, v in pairs(game.Players:GetPlayers()) do
+					if v.Name:lower():find(str:lower()) then
+						table.insert(pt, v);
+					end
+				end
+			elseif str == 'me' then
+				table.insert(pt, plr);
+			elseif str == 'random' then
+				table.insert(pt, game.Players:GetPlayers()[math.random(1, #game.Players:GetPlayers())]);
+			end
+			return pt;
+		end
+
+		local function align(i,v)
+			local att0 = Instance.new("Attachment", i)
+			att0.Position = Vector3.new(0,0,0)
+			local att1 = Instance.new("Attachment", v)
+			att1.Position = Vector3.new(0,0,0)
+			local AP = Instance.new("AlignPosition", i)
+			AP.Attachment0 = att0
+			AP.Attachment1 = att1
+			AP.RigidityEnabled = false
+			AP.ReactionForceEnabled = false
+			AP.ApplyAtCenterOfMass = false
+			AP.MaxForce = 9999999
+			AP.MaxVelocity = math.huge
+			AP.Responsiveness = 65
+			local AO = Instance.new("AlignOrientation", i)
+			AO.Attachment0 = att0
+			AO.Attachment1 = att1
+			AO.ReactionTorqueEnabled = false
+			AO.PrimaryAxisOnly = false
+			AO.MaxTorque = 9999999
+			AO.MaxAngularVelocity = math.huge
+			AO.Responsiveness = 50
+		end
+
+
+		--Dont touch above
+
+		align(Hats.Hat1.Handle, Character["Torso"])
+		align(Hats.Hat2.Handle, Character["Torso"])
+				align(Hats.Hat3.Handle, Character["Torso"])
+		
+
+
+     Hats.Hat1.Handle.Attachment.Rotation = Vector3.new(0,90,0)
+          Hats.Hat1.Handle.Attachment.Position = Vector3.new(0,-5,0)
+                    Hats.Hat2.Handle.Attachment.Position = Vector3.new(1.4,-6.4,0)
+            Hats.Hat3.Handle.Attachment.Position = Vector3.new(-1.4,-6.4,0)
+          wait()
+
+     -- Hats.Hat4.Handle.Attachment.Rotation = Vector3.new(0,0,0)
+		
+
+		
+        Character:WaitForChild("Torso"):FindFirstChild("Attachment").Name = "Attachment1" -- make a new attachment to
+
+  
+
+        Character:WaitForChild("Torso").Attachment1.Position = Vector3.new(0, 0, 0)
+
+        -- the mid value is up or down it depends it goes down if u have a minus infront of it and up if u dont
+		-- the last value is forwards or backwards if u put a minus infront of it it goes forward and if u remove the minus it goes backwards
+		-- the first value is to the side if u dont have minus and to the other side if u have minus im bad at explaining lol
+		--Character:WaitForChild("Torso").Attachment1.Position = Vector3.new(-0, 0, -0) - position of hat2
+		-- Position or Rotation
+
+
+
+
+game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(KeyPressed)
+ if KeyPressed ==  "F" then -- key to play animation
+     if toggle == false then
+ Hats.Hat1.Handle.Attachment.Position = Vector3.new(0,1.3,3)
+wait(.1)
+Character:WaitForChild("Torso").Attachment1.Position = Vector3.new(0,12,0) 	-- normal value  -- Position or Rotation
+           toggle = true
+ else
+     
+	              toggle = true
+     end
+    
+    end
+end)
+
+while true do
+Character:WaitForChild("Torso").Attachment1.Position = Vector3.new(0,0,0)
+Character:WaitForChild("Torso").Attachment4.Position = Vector3.new(0,0,0)
+Character:WaitForChild("Torso").Attachment2.Position = Vector3.new(0,0,0)
+Character:WaitForChild("Torso").Attachment3.Position = Vector3.new(0,0,0)
+Character:WaitForChild("Torso").Attachment5.Position = Vector3.new(0,0,0)--- value for loop -- Position or Rotation
+wait(.1)
+Character:WaitForChild("Torso").Attachment5.Position = Vector3.new(0,0,0)
+Character:WaitForChild("Torso").Attachment4.Position = Vector3.new(0,0,0)
+Character:WaitForChild("Torso").Attachment3.Position = Vector3.new(0,0,0)
+Character:WaitForChild("Torso").Attachment1.Position = Vector3.new(0,0,0)
+Character:WaitForChild("Torso").Attachment2.Position = Vector3.new(0,0,0)-- value for loop end Position or Rotation
+end
+
+	      	end    
+})
+
+
+Pee:AddButton({
+	Name = "Copy hats [._.]",
+    Icon = "rbxassetid://10849336266",
+	Callback = function()
+setclipboard("Hats for a ._. : 3398308134 - International Fedora - Canada , 4584029953 - International Fedora - Poland , 376527115 - Jade Necklace with Shell Pendant , ")
 wait(0.5)
 OrionLib:MakeNotification({
     Name = "Time HatHub",
