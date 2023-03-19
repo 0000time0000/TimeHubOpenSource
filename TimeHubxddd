@@ -152,6 +152,7 @@ Main:AddButton({
 })
 
 
+
 local Autowalk = Main:AddSection({
     Name = "Autowalk"
 })
@@ -2760,6 +2761,27 @@ fov:AddSlider({
     ValueName = "- Your Fov",
     Callback = function(Value)
          game.Workspace.Camera.FieldOfView = (Value)
+    end    
+})
+
+local fps = Dev:AddSection({
+    Name = "FPS"
+})
+
+
+fps:AddParagraph("FPS setting warning","After setting your fps to lower then 5 this will be hard to get back normally. If your pc is trash this slider will do nothing")
+    
+    
+fps:AddSlider({
+    Name = "Set your fps",
+    Min = 1,
+    Max = 500,
+    Default = 120,
+    Color = Color3.fromRGB(255,255,255),
+    Increment = 1,
+    ValueName = "- Your FPS",
+    Callback = function(Cap)
+    setfpscap(Cap)
     end    
 })
 
