@@ -59,6 +59,12 @@ local Badges = Window:MakeTab({
 	PremiumOnly = false
 })
 
+    local Tool = Window:MakeTab({
+	Name = "Tool",
+	Icon = "rbxassetid://11216809494",
+	PremiumOnly = false
+})
+
     local Dev = Window:MakeTab({
 	Name = "Dev",
 	Icon = "rbxassetid://11216809494",
@@ -2764,3 +2770,208 @@ local Changes = Changelog:AddSection({
 Changes:AddParagraph("TimeHub v2.0.0","[=] Small changes                                                                           [+] Coloured player edit sliders                                                    [+] Added warning to tabs                                                                          [+] Added changelogs                                                                                   [+] Changed TimeHub name                                                                                   [+] Added backflip")
 
 Changes:AddParagraph("TimeHub v2.0.1","[=] Small changes                                                                           [+] Added spin in main                                                                                [+] Added ._. in HatHub tab                                                                         [+] Fixed FakeLag                                                                                       [+] Added jobid in TimeHook (premium)")
+
+
+
+local x = Instance.new("NumberValue")
+x.Parent = workspace
+x.Name = "x"
+local z = Instance.new("NumberValue")
+z.Parent = workspace
+z.Name = "z"
+local y = Instance.new("NumberValue")
+y.Parent = workspace
+y.Name = "y"
+local l = Instance.new("BoolValue")
+l.Parent = workspace
+l.Name = "loop"
+wait(0.1)
+local RotX = Instance.new("NumberValue")
+RotX.Parent = workspace
+RotX.Name = "RotX"
+local RotZ = Instance.new("NumberValue")
+RotZ.Parent = workspace
+RotZ.Name = "RotZ"
+local RotY = Instance.new("NumberValue")
+RotY.Parent = workspace
+RotY.Name = "RotY"
+wait(0.1)
+
+
+local p = Tool:AddSection({
+	Name = "Positions"
+})
+local r = Tool:AddSection({
+	Name = "Rotations"
+})
+
+local s = Tool:AddSection({
+	Name = "Set's"
+})
+p:AddSlider({
+	Name = "Move X Position ◀️▶️",
+	Min = -15,
+	Max = 15,
+	Default = 0,
+	Color = Color3.fromRGB(89, 169, 255),
+	Increment = 0.1,
+	ValueName = "X - Pos",
+	Callback = function(x)
+		game.workspace.x.Value = x
+	end    
+})
+
+p:AddSlider({
+	Name = "Move Y Position 🔼🔽",
+	Min = -15,
+	Max = 15,
+	Default = 0,
+	Color = Color3.fromRGB(89, 169, 255),
+	Increment = 0.1,
+	ValueName = "Y - Pos",
+	Callback = function(y)
+		game.workspace.y.Value = y
+	end    
+})
+
+p:AddSlider({
+	Name = "Move Z Position ↩️↪️",
+	Min = -15,
+	Max = 15,
+	Default = 0,
+	Color = Color3.fromRGB(89, 169, 255),
+	Increment = 0.1,
+	ValueName = "Z - Pos",
+	Callback = function(z)
+		game.workspace.z.Value = z
+	end    
+})
+
+r:AddSlider({
+	Name = "Move X Rotation",
+	Min = -360,
+	Max = 360,
+	Default = 0,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "X - Rotation",
+	Callback = function(Xr)
+		game.workspace.RotX.Value = Xr
+	end    
+})
+
+r:AddSlider({
+	Name = "Move Y Rotation",
+	Min = -360,
+	Max = 360,
+	Default = 0,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Y - Rotation",
+	Callback = function(Yr)
+		game.workspace.RotY.Value = Yr
+	end    
+})
+
+r:AddSlider({
+	Name = "Move Z Rotation ",
+	Min = -360,
+	Max = 360,
+	Default = 0,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Z - Rotation",
+	Callback = function(Zr)
+		game.workspace.RotZ.Value = Zr
+	end    
+})
+
+s:AddToggle({
+	Name = "Looped set",
+	Default = false,
+	Callback = function(lll)
+		game.workspace.loop.Value = lll
+	end    
+})
+
+s:AddButton({
+	Name = "Set",
+	Callback = function()
+if game.workspace.loop.Value == true
+
+then
+    while game.workspace.loop.Value == true do
+        local sin = math.sin
+local cos = math.cos
+local rd = math.rad
+local cf = {a=CFrame.Angles,n=CFrame.new}
+local plr = game:GetService("Players").LocalPlayer; plr.Character.Humanoid:UnequipTools()
+local char = plr.Character
+local Tools = plr.Backpack:GetChildren()
+
+
+
+--boombox grips
+Tools[1].Grip = cf.n(game.workspace.x.Value,game.workspace.y.Value,game.workspace.z.Value) * cf.a(rd(game.workspace.RotX.Value),rd(game.workspace.RotY.Value),rd(game.workspace.RotZ.Value))
+Tools[1].Parent = char
+wait(0.001)
+end
+
+    else
+        
+        
+local sin = math.sin
+local cos = math.cos
+local rd = math.rad
+local cf = {a=CFrame.Angles,n=CFrame.new}
+local plr = game:GetService("Players").LocalPlayer; plr.Character.Humanoid:UnequipTools()
+local char = plr.Character
+local Tools = plr.Backpack:GetChildren()
+
+
+
+--boombox grips
+Tools[1].Grip = cf.n(game.workspace.x.Value,game.workspace.y.Value,game.workspace.z.Value) * cf.a(rd(game.workspace.RotX.Value),rd(game.workspace.RotY.Value),rd(game.workspace.RotZ.Value))
+Tools[1].Parent = char
+print(x)
+end
+  	end    
+})
+
+s:AddButton({
+	Name = "Copy Template",
+	Callback = function()
+local main = [[
+local sin = math.sin
+local cos = math.cos
+local rd = math.rad
+local cf = {a=CFrame.Angles,n=CFrame.new}
+local plr = game:GetService("Players").LocalPlayer; plr.Character.Humanoid:UnequipTools()
+local char = plr.Character
+local Tools = plr.Backpack:GetChildren()
+
+                --   X Y Z ,Rotations X     Y     Z
+Tools[1].Grip = cf.n(0,0,0) * cf.a(rd(0),rd(0),rd(0)) 
+Tools[1].Parent = char]]
+
+setclipboard(main)
+  	end    
+})
+s:AddButton({
+	Name = "Remove mesh",
+	Callback = function()
+	    local sin = math.sin
+local cos = math.cos
+local rd = math.rad
+local cf = {a=CFrame.Angles,n=CFrame.new}
+local plr = game:GetService("Players").LocalPlayer; plr.Character.Humanoid:UnequipTools()
+local char = plr.Character
+local Tools = plr.Backpack:GetChildren()
+
+                --   X Y Z ,Rotations X     Y     Z
+Tools[1].Grip = cf.n(0,0,0) * cf.a(rd(0),rd(0),rd(0)) 
+Tools[1].Parent = char
+Tools[1].Handle.Mesh:Destroy()
+Tools[1].Handle.SpecialMesh:Destroy()
+  	end    
+})
