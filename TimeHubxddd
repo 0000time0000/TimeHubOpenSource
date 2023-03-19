@@ -61,20 +61,20 @@ local Badges = Window:MakeTab({
 
     local Tool = Window:MakeTab({
 	Name = "Tool",
-	Icon = "rbxassetid://11216809494",
+	Icon = "rbxassetid://12836697687",
 	PremiumOnly = false
 })
 
     local Dev = Window:MakeTab({
 	Name = "Dev",
-	Icon = "rbxassetid://11216809494",
+	Icon = "rbxassetid://12836713243",
 	PremiumOnly = false
 })
 
 
     local Changelog = Window:MakeTab({
 	Name = "Changelog",
-	Icon = "rbxassetid://11216809494",
+	Icon = "rbxassetid://12836714958",
 	PremiumOnly = false
 })
 --Main
