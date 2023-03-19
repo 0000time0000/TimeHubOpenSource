@@ -1,5 +1,5 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "TimeHub Free / Version 2.0.1", Icon = "rbxassetid://10853316988", IntroIcon = "rbxassetid://10853316988", HidePremium = false, IntroEnabled = true, IntroText = "TimeHub!", SaveConfig = true, ConfigFolder = "TimeHubSaves"})
+local Window = OrionLib:MakeWindow({Name = "TimeHub Free / Version 2.2.1", Icon = "rbxassetid://10853316988", IntroIcon = "rbxassetid://10853316988", HidePremium = false, IntroEnabled = true, IntroText = "TimeHub!", SaveConfig = true, ConfigFolder = "TimeHubSaves"})
 -- Delete if this will be not works on synapse
 wait(1)
 
